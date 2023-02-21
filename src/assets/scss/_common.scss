@@ -1,0 +1,25 @@
+a {
+  color: black;
+  &:hover {
+    color: black;
+  }
+}
+
+.flex-center-left {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.mla {
+  margin-left: auto;
+}
+.mra {
+  margin-right: auto;
+}
