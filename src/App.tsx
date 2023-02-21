@@ -1,6 +1,6 @@
 import React from 'react'
 import '@assets/scss/_common.scss'
-import './App.scss'
+import './App.scoped.scss'
 import { Desktop, Tablet, Mobile } from '@assets/mediaQuery'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MyHeader from '@ui/Header/MyHeader'

@@ -1,7 +1,7 @@
 import { Desktop, Tablet, Mobile } from '@assets/mediaQuery'
 import { Link } from 'react-router-dom'
 import { UserOutlined, MenuOutlined } from '@ant-design/icons'
-import './MyHeader.scss'
+import './MyHeader.scoped.scss'
 function MyHeader() {
   return (
     <div className="my-header">

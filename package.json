@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "craco-alias": "^3.0.1",
+    "craco-plugin-scoped-css": "^1.1.1",
     "prettier-eslint": "^15.0.1"
   }
 }
