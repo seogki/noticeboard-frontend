@@ -1,7 +1,7 @@
 import React from 'react'
 import Main from './ui/Main/Main'
 import './App.scss'
-import { Desktop, Tablet, Mobile } from './assets/mediaQuery'
+import { Desktop, Tablet, Mobile } from '@assets/mediaQuery'
 function App() {
   return (
     <div className="App">
