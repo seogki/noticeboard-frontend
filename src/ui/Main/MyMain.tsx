@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-function Main() {
+import './MyMain.scss'
+function MyMain() {
   return <div className="layout-main"></div>
 }
 
-export default Main
+export default MyMain

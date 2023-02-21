@@ -1,0 +1,39 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: black;
+  &:hover {
+    color: black;
+  }
+}
+
+.flex-center-left {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.mla {
+  margin-left: auto;
+}
+.mra {
+  margin-right: auto;
+}
+.tac {
+  text-align: center;
+}
