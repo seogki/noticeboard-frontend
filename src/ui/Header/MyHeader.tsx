@@ -4,7 +4,7 @@ import { UserOutlined, MenuOutlined } from '@ant-design/icons'
 import './MyHeader.scoped.scss'
 function MyHeader() {
   return (
-    <div className="my-header">
+    <header className="my-header">
       <div className="container flex-center-left">
         <Mobile>
           <MenuOutlined className="menu-icon flex-center" />
@@ -14,7 +14,7 @@ function MyHeader() {
           <UserOutlined />
         </Link>
       </div>
-    </div>
+    </header>
   )
 }
 

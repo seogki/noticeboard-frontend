@@ -15,3 +15,11 @@ h2 {
   flex-direction: row;
   position: relative;
 }
+
+form {
+  label {
+    display: inline-block;
+    margin-left: 10%;
+    width: 90%;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './MyMain.scss'
 function MyMain() {
-  return <div className="layout-main"></div>
+  return <main className="layout-main"></main>
 }
 
 export default MyMain
