@@ -1,1 +1,13 @@
+//responsive
+$G-breakpoint-mobile: 360px;
+$G-breakpoint-tablet: 768px;
+$G-breakpoint-desktop: 992px;
+
 $G-container-bg: #eee;
+$G-primary-color: #eee;
+$G-secondary-color: #eee;
+
+$G-mobile-default-font-size: calc(
+  16px + (24 - 16) * (100vw - 400px) / (800 - 400)
+);
+$G-mobile-font-sizes: 2em, 1.5em, 1em, 0.8em, 0.6em;

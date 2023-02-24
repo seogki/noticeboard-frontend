@@ -1,12 +1,20 @@
+@use './mixin';
+@include mixin.mobile;
 p,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+input {
   padding: 0;
   margin: 0;
+}
+
+input {
+  padding: 0.3rem;
+  border: 1px solid #ccc;
 }
 
 a {

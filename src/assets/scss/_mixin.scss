@@ -1,0 +1,16 @@
+@use './variable';
+
+@mixin mobile {
+  @media (min-width: #{variable.$G-breakpoint-mobile}) and (max-width: #{variable.$G-breakpoint-tablet - 1px}) {
+    html {
+      font-size: variable.$G-mobile-default-font-size;
+    }
+    @for $i from 1 through length(variable.$G-mobile-font-sizes) {
+      $size: nth(variable.$G-mobile-font-sizes, $i);
+      .fs-#{$i} {
+        font-size: $size;
+      }
+    }
+    @content;
+  }
+}

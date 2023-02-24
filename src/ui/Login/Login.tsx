@@ -1,17 +1,42 @@
 import { useState } from 'react'
 import './Login.scoped.scss'
 function Login() {
-  const [id, setId] = useState('')
-  const [pwd, setPwd] = useState('')
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+  })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    })
+  }
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    alert(JSON.stringify(values, null, 2))
+  }
   return (
     <div className="login">
       <h2 className="tac">Login</h2>
       <form className="container flex-center-left">
-        <label>계정</label>
-        <input className="id" value={id} />
-        <label>비밀번호</label>
-        <input className="pwd" type="password" value={pwd} />
-        <input type="submit" value="Submit" />
+        <label className="fs-5">계정</label>
+        <input
+          className="email"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+        />
+        <label className="fs-5">비밀번호</label>
+        <input
+          className="pwd"
+          type="password"
+          name="password"
+          value={values.password}
+          onChange={handleChange}
+        />
+        <button type="submit" value="Submit" onClick={handleSubmit}>
+          로그인
+        </button>
       </form>
     </div>
   )
