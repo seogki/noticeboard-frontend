@@ -7,6 +7,7 @@ import MyHeader from '@ui/Header/MyHeader'
 import MyMain from '@ui/Main/MyMain'
 import Login from '@ui/Login/Login'
 import MyFooter from '@ui/Footer/MyFooter'
+import Register from '@ui/Login/Register'
 function App() {
   return (
     <div className="App">
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MyMain />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/Register" element={<Register />}></Route>
         </Routes>
       </BrowserRouter>
       {/* <MyFooter /> */}

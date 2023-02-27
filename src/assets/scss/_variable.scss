@@ -4,8 +4,10 @@ $G-breakpoint-tablet: 768px;
 $G-breakpoint-desktop: 992px;
 
 $G-container-bg: #eee;
-$G-primary-color: black;
-$G-secondary-color: #eee;
+$G-primary-color: #101820ff;
+$G-primary-text-color: white;
+$G-secondary-color: #fee715ff;
+$G-secondary-text-color: black;
 
 $G-mobile-default-font-size: calc(
   16px + (24 - 16) * (100vw - 400px) / (800 - 400)

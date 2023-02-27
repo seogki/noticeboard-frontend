@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import './Login.scoped.scss'
+import './Register.scoped.scss'
 import { postUser } from '@network/login'
-import { Link } from 'react-router-dom'
-function Login() {
+function Register() {
   const [values, setValues] = useState({
     email: '',
+    nickname: '',
     password: '',
   })
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,20 +19,26 @@ function Login() {
     postUser(payload)
   }
   return (
-    <div className="login flex-center">
-      <h2 className="tac">LOGIN</h2>
+    <div className="register flex-center">
+      <h2 className="tac">Register</h2>
       <form className="container flex-center-left">
-        <label className="fs-5">계정</label>
+        <label className="fs-5">이메일</label>
         <input
           className="email"
           name="email"
           value={values.email}
           onChange={handleChange}
         />
+        <label className="fs-5">닉네임</label>
+        <input
+          className="nickname"
+          name="nickname"
+          value={values.nickname}
+          onChange={handleChange}
+        />
         <label className="fs-5">비밀번호</label>
         <input
-          className="pwd"
-          type="password"
+          className="password"
           name="password"
           value={values.password}
           onChange={handleChange}
@@ -43,14 +49,11 @@ function Login() {
           onClick={handleSubmit}
           className="fs-4"
         >
-          로그인
+          회원가입
         </button>
-        <Link to="/Register" style={{ display: 'contents' }}>
-          <button className="fs-4">회원가입</button>
-        </Link>
       </form>
     </div>
   )
 }
 
-export default Login
+export default Register
