@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Login.scoped.scss'
+import {postUser} from "@network/login";
 function Login() {
   const [values, setValues] = useState({
     email: '',
@@ -13,7 +14,8 @@ function Login() {
   }
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    alert(JSON.stringify(values, null, 2))
+    const payload = {data: values};
+    postUser(payload);
   }
   return (
     <div className="login">

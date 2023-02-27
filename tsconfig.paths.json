@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@ui/*": ["./src/ui/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@network/*": ["./src/network/*"]
     }
   }
 }
