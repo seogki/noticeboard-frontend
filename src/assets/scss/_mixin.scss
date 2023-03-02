@@ -14,3 +14,17 @@
     @content;
   }
 }
+@mixin desktop {
+  @media (min-width: #{variable.$G-breakpoint-desktop}) {
+    html {
+      font-size: variable.$G-desktop-default-font-size;
+    }
+    @for $i from 1 through length(variable.$G-desktop-font-sizes) {
+      $size: nth(variable.$G-desktop-font-sizes, $i);
+      .fs-#{$i} {
+        font-size: $size;
+      }
+    }
+    @content;
+  }
+}

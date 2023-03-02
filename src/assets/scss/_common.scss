@@ -1,6 +1,7 @@
 @use './mixin';
 @use './variable';
 @include mixin.mobile;
+@include mixin.desktop;
 p,
 h1,
 h2,
@@ -32,7 +33,7 @@ h3 {
 }
 
 input {
-  padding: 0.3rem;
+  padding: 0.3rem 0.5rem;
   border: 1px solid #ccc;
   &:hover,
   &:active {

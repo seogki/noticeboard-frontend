@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import { useState, useReducer } from 'react'
 import './Login.scoped.scss'
 import { login } from '@network/auth'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAppSelector, useAppDispatch } from '@redux/store'
+import { setLoginState } from '@redux/loginSlice'
 import { Message } from '@interface/base'
+
 function Login() {
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const [values, setValues] = useState({
     memberEmail: '',
     memberPassword: '',
@@ -18,7 +23,16 @@ function Login() {
     e.preventDefault()
     const payload = { data: values }
     const result: Message = await login(payload)
-    console.log(result); 
+    console.log(result)
+    if (result.data !== null && result.data.accessToken) {
+      localStorage.setItem('access-token', result.data.accessToken)
+      localStorage.setItem('refresh-token', result.data.refreshToken)
+      localStorage.setItem('grantType', result.data.grantType)
+      dispatch(setLoginState(true))
+      navigate('/')
+    } else {
+      //wrong Password or email
+    }
   }
   return (
     <div className="login flex-center">
