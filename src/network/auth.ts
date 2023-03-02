@@ -7,6 +7,7 @@ export async function signUp(payload: { path?: any; data?: any }) {
     return data
   } catch (e) {
     console.error(e)
+    return undefined
   }
 }
 export async function login(payload: { path?: any; data?: any }) {
@@ -16,5 +17,6 @@ export async function login(payload: { path?: any; data?: any }) {
     return data
   } catch (e) {
     console.error(e)
+    return undefined
   }
 }

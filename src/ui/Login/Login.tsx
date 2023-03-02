@@ -31,6 +31,7 @@ function Login() {
       dispatch(setLoginState(true))
       navigate('/')
     } else {
+      alert('존재하지않는 계정입니다')
       //wrong Password or email
     }
   }
@@ -42,6 +43,7 @@ function Login() {
         <input
           className="memberEmail"
           name="memberEmail"
+          placeholder="이메일을 입력해주세요"
           value={values.memberEmail}
           onChange={handleChange}
         />
@@ -49,6 +51,7 @@ function Login() {
         <input
           className="memberPassword"
           type="password"
+          placeholder="8 ~ 12자리의 비밀번호를 입력해주세요"
           name="memberPassword"
           value={values.memberPassword}
           onChange={handleChange}

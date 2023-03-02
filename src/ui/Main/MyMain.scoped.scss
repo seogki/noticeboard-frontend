@@ -11,18 +11,19 @@
   }
 
   .calendar {
-    height: 70%;
+    height: 72%;
     width: 90%;
     margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    table-layout: fixed;
+    border-collapse: collapse;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: flex-start;
 
-    .day {
+    td {
       width: 20%;
+      // background-color: bisque;
       box-sizing: border-box;
-      // background-color: variable.$G-secondary-color;
-      // color: variable.$G-secondary-text-color;
       border: 1px solid variable.$G-secondary-color;
     }
   }

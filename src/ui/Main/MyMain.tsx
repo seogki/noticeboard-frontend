@@ -4,21 +4,36 @@ import './MyMain.scoped.scss'
 function MyMain() {
   const today: string = dayjs().format('YYYY년 MM월 DD일')
   const days: number = dayjs().daysInMonth()
-
+  const list: number[] = []
+  const splitList: number[][] = []
+  const init = () => {
+    for (let i = 0; i < days; i++) {
+      list.push(i + 1)
+    }
+    for (let i = 0; i < list.length; i += 5) {
+      splitList.push(list.slice(i, i + 5))
+    }
+    console.log(splitList)
+  }
+  init()
   return (
     <main className="layout-main">
       <h3 className="tac">{today}</h3>
-      <section className="calendar">
-        {(() => {
-          let divs = []
-          for (let i = 0; i < days; i++) {
-            divs.push(
-              <div className={'flex-center day day-' + (i + 1)}>{i}</div>
-            )
-          }
-          return divs
-        })()}
-      </section>
+      <table className="calendar">
+        <tbody>
+          {splitList.map((list) => (
+            <>
+              <tr className="day">
+                {list.map((data) => (
+                  <>
+                    <td className="tac">{data}</td>
+                  </>
+                ))}
+              </tr>
+            </>
+          ))}
+        </tbody>
+      </table>
     </main>
   )
 }
