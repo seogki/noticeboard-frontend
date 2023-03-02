@@ -9,10 +9,10 @@
   background-color: variable.$G-primary-color;
 }
 h2 {
-  margin-bottom: 5%;
   @include mixin.desktop {
     margin-bottom: 1%;
   }
+  margin-bottom: 5%;
 }
 .container {
   @include mixin.mobile {
@@ -25,9 +25,7 @@ h2 {
   }
   width: 90%;
   height: 45%;
-
   border-radius: 8px;
-
   background-color: variable.$G-container-bg;
   flex-direction: row;
   position: relative;
@@ -46,8 +44,14 @@ form {
     border-radius: 8px;
   }
   button {
+    @include mixin.mobile {
+      max-height: 36px;
+    }
+    @include mixin.desktop {
+      max-height: 48px;
+    }
     width: 70%;
-    height: 12%;
+    height: 8vw;
     margin: 2% auto 0;
     background-color: variable.$G-primary-color;
     color: variable.$G-primary-text-color;

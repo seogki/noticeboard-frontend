@@ -2,9 +2,9 @@ import { useState } from 'react'
 import './Register.scoped.scss'
 import { signUp } from '@network/auth'
 import { Message } from '@interface/base'
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 function Register() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [values, setValues] = useState({
     memberEmail: '',
     memberNickname: '',
@@ -17,22 +17,26 @@ function Register() {
     })
   }
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
     e.preventDefault()
     const payload = { data: values }
-    const result : Message = await signUp(payload)
-    console.log(result);
-    if(result.status === "OK") {
-      navigate("/login");
+    const result: Message = await signUp(payload)
+    console.log(result)
+    if (result.status === 'OK') {
+      navigate('/login')
+    } else {
+      alert(result.message)
     }
   }
   return (
     <div className="register flex-center">
-      <h2 className="tac">Register</h2>
+      <h2 className="tac">회원가입</h2>
       <form className="container flex-center-left">
         <label className="fs-5">이메일</label>
         <input
           className="memberEmail"
           name="memberEmail"
+          placeholder="이메일을 입력해주세요"
           value={values.memberEmail}
           onChange={handleChange}
         />
@@ -40,6 +44,7 @@ function Register() {
         <input
           className="memberNickname"
           name="memberNickname"
+          placeholder="닉네임을 입력해주세요"
           value={values.memberNickname}
           onChange={handleChange}
         />
@@ -47,6 +52,7 @@ function Register() {
         <input
           className="memberPassword"
           name="memberPassword"
+          placeholder="8~12자리의 비밀번호를 입력해주세요"
           type="password"
           value={values.memberPassword}
           onChange={handleChange}

@@ -23,15 +23,22 @@
     @include mixin.desktop {
       padding: 1%;
     }
-    padding: 4%;
+    padding: 4% 4% 4% 3%;
     margin-left: 4%;
+  }
+  .user-icon {
+    @include mixin.desktop {
+      padding: 1%;
+    }
+    color: variable.$G-primary-text-color;
+    padding: 4% 3%;
   }
   .login-icon {
     @include mixin.desktop {
       padding: 1%;
     }
     color: variable.$G-primary-text-color;
-    padding: 4%;
+    padding: 4% 3%;
     margin-right: 4%;
   }
 }

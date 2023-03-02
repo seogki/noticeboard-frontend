@@ -20,11 +20,11 @@ function Login() {
     })
   }
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
     e.preventDefault()
     const payload = { data: values }
     const result: Message = await login(payload)
-    console.log(result)
-    if (result.data !== null && result.data.accessToken) {
+    if (result && result.data !== null && result.data.accessToken) {
       localStorage.setItem('access-token', result.data.accessToken)
       localStorage.setItem('refresh-token', result.data.refreshToken)
       localStorage.setItem('grantType', result.data.grantType)
@@ -36,7 +36,7 @@ function Login() {
   }
   return (
     <div className="login flex-center">
-      <h2 className="tac">LOGIN</h2>
+      <h2 className="tac">로그인</h2>
       <form className="container flex-center-left">
         <label className="fs-5">계정</label>
         <input
