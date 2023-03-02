@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import './Register.scoped.scss'
 import { signUp } from '@network/auth'
+import { Message } from '@interface/base'
+import {useNavigate} from "react-router-dom";
 function Register() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     memberEmail: '',
     memberNickname: '',
@@ -16,8 +19,11 @@ function Register() {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     const payload = { data: values }
-    const result = await signUp(payload)
+    const result : Message = await signUp(payload)
     console.log(result);
+    if(result.status === "OK") {
+      navigate("/login");
+    }
   }
   return (
     <div className="register flex-center">

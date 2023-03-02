@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './Login.scoped.scss'
 import { login } from '@network/auth'
 import { Link } from 'react-router-dom'
+import { Message } from '@interface/base'
 function Login() {
   const [values, setValues] = useState({
     memberEmail: '',
@@ -16,8 +17,8 @@ function Login() {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     const payload = { data: values }
-    const result = await login(payload)
-    console.log(result);
+    const result: Message = await login(payload)
+    console.log(result); 
   }
   return (
     <div className="login flex-center">

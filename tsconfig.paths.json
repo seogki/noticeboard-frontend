@@ -4,7 +4,8 @@
     "paths": {
       "@ui/*": ["./src/ui/*"],
       "@assets/*": ["./src/assets/*"],
-      "@network/*": ["./src/network/*"]
+      "@network/*": ["./src/network/*"],
+      "@interface/*": ["./src/interface/*"]
     }
   }
 }
