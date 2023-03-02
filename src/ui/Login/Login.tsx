@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './Login.scoped.scss'
-import { postUser } from '@network/login'
+import { login } from '@network/auth'
 import { Link } from 'react-router-dom'
 function Login() {
   const [values, setValues] = useState({
-    email: '',
-    password: '',
+    memberEmail: '',
+    memberPassword: '',
   })
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({
@@ -13,10 +13,11 @@ function Login() {
       [e.target.name]: e.target.value,
     })
   }
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     const payload = { data: values }
-    postUser(payload)
+    const result = await login(payload)
+    console.log(result);
   }
   return (
     <div className="login flex-center">
@@ -24,17 +25,17 @@ function Login() {
       <form className="container flex-center-left">
         <label className="fs-5">계정</label>
         <input
-          className="email"
-          name="email"
-          value={values.email}
+          className="memberEmail"
+          name="memberEmail"
+          value={values.memberEmail}
           onChange={handleChange}
         />
         <label className="fs-5">비밀번호</label>
         <input
-          className="pwd"
+          className="memberPassword"
           type="password"
-          name="password"
-          value={values.password}
+          name="memberPassword"
+          value={values.memberPassword}
           onChange={handleChange}
         />
         <button

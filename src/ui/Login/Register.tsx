@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './Register.scoped.scss'
-import { postUser } from '@network/login'
+import { signUp } from '@network/auth'
 function Register() {
   const [values, setValues] = useState({
-    email: '',
-    nickname: '',
-    password: '',
+    memberEmail: '',
+    memberNickname: '',
+    memberPassword: '',
   })
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({
@@ -13,10 +13,11 @@ function Register() {
       [e.target.name]: e.target.value,
     })
   }
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     const payload = { data: values }
-    postUser(payload)
+    const result = await signUp(payload)
+    console.log(result);
   }
   return (
     <div className="register flex-center">
@@ -24,23 +25,24 @@ function Register() {
       <form className="container flex-center-left">
         <label className="fs-5">이메일</label>
         <input
-          className="email"
-          name="email"
-          value={values.email}
+          className="memberEmail"
+          name="memberEmail"
+          value={values.memberEmail}
           onChange={handleChange}
         />
         <label className="fs-5">닉네임</label>
         <input
-          className="nickname"
-          name="nickname"
-          value={values.nickname}
+          className="memberNickname"
+          name="memberNickname"
+          value={values.memberNickname}
           onChange={handleChange}
         />
         <label className="fs-5">비밀번호</label>
         <input
-          className="password"
-          name="password"
-          value={values.password}
+          className="memberPassword"
+          name="memberPassword"
+          type="password"
+          value={values.memberPassword}
           onChange={handleChange}
         />
         <button
