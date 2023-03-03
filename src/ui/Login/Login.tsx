@@ -3,7 +3,7 @@ import './Login.scoped.scss'
 import { login } from '@network/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from '@redux/store'
-import { setLoginState } from '@redux/loginSlice'
+import { setLoginState } from '@redux/authSlice'
 import { Message } from '@interface/base'
 
 function Login() {

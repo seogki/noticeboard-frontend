@@ -1,9 +1,9 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import loginSlice from './loginSlice'
+import authSlice from './authSlice'
 
 const rootReducers = combineReducers({
-  login: loginSlice.reducer,
+  auth: authSlice.reducer,
 })
 
 export const store = configureStore({

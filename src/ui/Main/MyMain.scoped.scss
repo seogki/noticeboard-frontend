@@ -1,5 +1,5 @@
 @use '@assets/scss/variable';
-.layout-main {
+main {
   width: 100%;
   height: 100%;
   background-color: variable.$G-primary-color;
@@ -16,13 +16,9 @@
     margin: 0 auto;
     table-layout: fixed;
     border-collapse: collapse;
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: flex-start;
 
     td {
       width: 20%;
-      // background-color: bisque;
       box-sizing: border-box;
       border: 1px solid variable.$G-secondary-color;
     }

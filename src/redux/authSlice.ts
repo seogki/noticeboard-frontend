@@ -7,8 +7,8 @@ interface CommonState {
 const initialState: CommonState = {
   isLogin: false,
 }
-export const loginSlice = createSlice({
-  name: 'login',
+export const authSlice = createSlice({
+  name: 'auth',
   initialState,
   reducers: {
     setLoginState(state, action: PayloadAction<boolean>) {
@@ -17,6 +17,6 @@ export const loginSlice = createSlice({
   },
 })
 
-export const { setLoginState } = loginSlice.actions
+export const { setLoginState } = authSlice.actions
 
-export default loginSlice
+export default authSlice

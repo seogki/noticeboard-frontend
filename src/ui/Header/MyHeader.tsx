@@ -10,14 +10,14 @@ import './MyHeader.scoped.scss'
 import MySider from '@ui/Sider/MySider'
 import { useState } from 'react'
 import { useAppSelector, useAppDispatch } from '@redux/store'
-import { setLoginState } from '@redux/loginSlice'
+import { setLoginState } from '@redux/authSlice'
 function MyHeader() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const [collapse, setCollapse] = useState(true)
-  const { isLogin } = useAppSelector((state) => state.login)
+  const { isLogin } = useAppSelector((state) => state.auth)
   const handleCollapseChange = (arg: boolean) => {
-    setCollapse(arg)
+    setCollapse(arg) 
   }
   const handleLogout = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation()
@@ -33,7 +33,7 @@ function MyHeader() {
     navigate('/')
   }
   return (
-    <header className="my-header">
+    <header>
       <div className="container flex-center-left">
         <Mobile>
           <>

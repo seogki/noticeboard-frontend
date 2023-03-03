@@ -13,11 +13,10 @@ function MyMain() {
     for (let i = 0; i < list.length; i += 5) {
       splitList.push(list.slice(i, i + 5))
     }
-    console.log(splitList)
   }
   init()
   return (
-    <main className="layout-main">
+    <main>
       <h3 className="tac">{today}</h3>
       <table className="calendar">
         <tbody>
