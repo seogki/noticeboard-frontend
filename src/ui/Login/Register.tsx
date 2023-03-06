@@ -52,7 +52,7 @@ function Register() {
         <input
           className="memberPassword"
           name="memberPassword"
-          placeholder="8~12자리의 비밀번호를 입력해주세요"
+          placeholder="8 ~ 12자리의 비밀번호를 입력해주세요"
           type="password"
           value={values.memberPassword}
           onChange={handleChange}

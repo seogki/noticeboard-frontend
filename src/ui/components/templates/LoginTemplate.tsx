@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import * as TS from './style'
 export interface LoginTemplateProps {
-  header: React.ReactNode
-  content: React.ReactNode
+  header?: React.ReactNode
+  content?: React.ReactNode
 }
 
 const LoginTemplate: FC<LoginTemplateProps> = (

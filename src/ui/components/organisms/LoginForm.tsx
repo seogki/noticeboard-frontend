@@ -1,11 +1,15 @@
 import { FC } from 'react'
 import FormInput, { FormInputProps } from '@components/molecules/FormInput'
 import * as OS from './style'
-import Button, { ButtonProps } from '@components/atoms/Button'
+import FormButton, { FormButtonProps } from '@components/molecules/FormButton'
+import FormTitle, { FormTitleProps } from '@components/molecules/FormTitle'
+import { Link } from 'react-router-dom'
 interface LoginFormProps {
+  title: FormTitleProps
   email: FormInputProps
   password: FormInputProps
-  submitBtn: ButtonProps
+  submitBtn: FormButtonProps
+  signupBtn: FormButtonProps
 }
 
 const LoginForm: FC<LoginFormProps> = (
@@ -13,11 +17,15 @@ const LoginForm: FC<LoginFormProps> = (
 ): JSX.Element => {
   return (
     <>
-      <OS.LoginFormContainer>
+      <FormTitle {...loginFormProps.title} />
+      <OS.FormInputContainer>
         <FormInput {...loginFormProps.email} />
         <FormInput {...loginFormProps.password} />
-        <Button {...loginFormProps.submitBtn} />
-      </OS.LoginFormContainer>
+        <FormButton {...loginFormProps.submitBtn} />
+        <Link to="/Register" style={{ display: 'contents' }}>
+          <FormButton {...loginFormProps.signupBtn} />
+        </Link>
+      </OS.FormInputContainer>
     </>
   )
 }

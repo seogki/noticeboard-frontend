@@ -48,7 +48,7 @@ function Login() {
   }
   return (
     <div className="login flex-center">
-      <Title {...TitleObj} />
+      {/* <Title {...TitleObj} /> */}
       <form className="container flex-center-left">
         {/* <label className="fs-5">계정</label> */}
         <FormInput {...formInputData}></FormInput>

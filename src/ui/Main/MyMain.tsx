@@ -20,12 +20,14 @@ function MyMain() {
       <h3 className="tac">{today}</h3>
       <table className="calendar">
         <tbody>
-          {splitList.map((list) => (
+          {splitList.map((list, index) => (
             <>
-              <tr className="day">
+              <tr className="day" key={list.toString()}>
                 {list.map((data) => (
                   <>
-                    <td className="tac">{data}</td>
+                    <td className="tac" key={data.toString()}>
+                      {data}
+                    </td>
                   </>
                 ))}
               </tr>

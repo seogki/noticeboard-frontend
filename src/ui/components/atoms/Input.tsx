@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export interface InputProps {
   inputName: string
   invalid?: boolean
+  name: string
   disabled?: boolean
   defaultValue?: string
   placeHolder: string

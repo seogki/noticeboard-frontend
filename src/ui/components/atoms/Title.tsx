@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import styled from 'styled-components'
 interface TitleProps {
-  title: string
+  name: string
   isCenter: boolean
 }
 
@@ -19,10 +19,12 @@ const StyledTitle = styled.h2<styledProps>`
   }}
 `
 
-const Title: FC<TitleProps> = ({ title, isCenter }): JSX.Element => {
+const Title: FC<TitleProps> = (titleProps: TitleProps): JSX.Element => {
   return (
     <>
-      <StyledTitle isCenter={isCenter}>{title}</StyledTitle>
+      <StyledTitle isCenter={titleProps.isCenter}>
+        {titleProps.name}
+      </StyledTitle>
     </>
   )
 }
