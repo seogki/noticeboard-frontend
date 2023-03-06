@@ -6,7 +6,8 @@
       "@assets/*": ["./src/assets/*"],
       "@network/*": ["./src/network/*"],
       "@interface/*": ["./src/interface/*"],
-      "@redux/*": ["./src/redux/*"]
+      "@redux/*": ["./src/redux/*"],
+      "@components/*": ["./src/ui/components/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true

@@ -5,7 +5,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from '@redux/store'
 import { setLoginState } from '@redux/authSlice'
 import { Message } from '@interface/base'
-
+import Title from '@components/atoms/Title'
+import FormInput from '@ui/components/molecules/FormInput'
 function Login() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -35,18 +36,29 @@ function Login() {
       //wrong Password or email
     }
   }
+  const TitleObj = { title: '로그인', isCenter: true }
+  const formInputData = {
+    inputName: 'memberEmail',
+    placeholder: '이메일을 입력해주세요',
+    values: values.memberEmail,
+    onchange: handleChange,
+    labelProps: {
+      name: '계정',
+    },
+  }
   return (
     <div className="login flex-center">
-      <h2 className="tac">로그인</h2>
+      <Title {...TitleObj} />
       <form className="container flex-center-left">
-        <label className="fs-5">계정</label>
-        <input
+        {/* <label className="fs-5">계정</label> */}
+        <FormInput {...formInputData}></FormInput>
+        {/* <input
           className="memberEmail"
           name="memberEmail"
           placeholder="이메일을 입력해주세요"
           value={values.memberEmail}
           onChange={handleChange}
-        />
+        /> */}
         <label className="fs-5">비밀번호</label>
         <input
           className="memberPassword"
