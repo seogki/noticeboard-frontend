@@ -8,14 +8,15 @@ import MyMain from '@ui/Main/MyMain'
 import Login from '@ui/Login/Login'
 import MyFooter from '@ui/Footer/MyFooter'
 import Register from '@ui/Login/Register'
+import LoginPage from '@ui/components/page/LoginPage'
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <MyHeader />
+        {/* <MyHeader /> */}
         <Routes>
           <Route path="/" element={<MyMain />}></Route>
-          <Route path="/login" element={<Login />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/Register" element={<Register />}></Route>
         </Routes>
       </BrowserRouter>

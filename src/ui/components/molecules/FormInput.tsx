@@ -6,6 +6,7 @@ import * as MS from '@components/molecules/style'
 export interface FormInputProps {
   inputName: string
   placeholder: string
+  type?: string
   labelProps: LabelProps
   invalid?: boolean
   disabled?: boolean
