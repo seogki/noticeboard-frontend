@@ -1,1 +1,21 @@
+//responsive
+$G-breakpoint-mobile: 360px;
+$G-breakpoint-tablet: 768px;
+$G-breakpoint-desktop: 992px;
+
 $G-container-bg: #eee;
+$G-primary-color: #101820ff;
+$G-primary-text-color: white;
+$G-secondary-color: #fee715ff;
+$G-secondary-text-color: black;
+
+$G-mobile-default-font-size: calc(
+  16px + (24 - 16) * (100vw - 400px) / (800 - 400)
+);
+
+$G-desktop-default-font-size: calc(
+  16px + (24 - 16) * (100vw - 1024px) / (1920 - 1024)
+);
+
+$G-mobile-font-sizes: 2em, 1.5em, 1em, 0.8em, 0.6em;
+$G-desktop-font-sizes: 2.5em, 2em, 1.5em, 1em, 0.9em;

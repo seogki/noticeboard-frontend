@@ -1,12 +1,10 @@
 @use '@assets/scss/variable';
 @use '@assets/scss/mixin';
-.login {
+.register {
   width: 100%;
   height: 100%;
-  @include mixin.desktop {
-    flex-direction: column;
-  }
   background-color: variable.$G-primary-color;
+  flex-direction: column;
 }
 h2 {
   @include mixin.desktop {
@@ -24,11 +22,12 @@ h2 {
     max-width: 600px;
   }
   width: 90%;
-  height: 45%;
+  height: auto;
   border-radius: 8px;
   background-color: variable.$G-container-bg;
   flex-direction: row;
   position: relative;
+  min-height: 45%;
 }
 
 form {
@@ -52,12 +51,12 @@ form {
     }
     width: 70%;
     height: 8vw;
+
     margin: 2% auto 0;
     background-color: variable.$G-primary-color;
     color: variable.$G-primary-text-color;
     border: 1px solid #eee;
     border-radius: 8px;
-    // padding: 4%;
   }
 
   a {

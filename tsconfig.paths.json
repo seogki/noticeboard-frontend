@@ -3,7 +3,13 @@
     "baseUrl": ".",
     "paths": {
       "@ui/*": ["./src/ui/*"],
-      "@assets/*": ["./src/assets/*"]
-    }
+      "@assets/*": ["./src/assets/*"],
+      "@network/*": ["./src/network/*"],
+      "@interface/*": ["./src/interface/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@components/*": ["./src/ui/components/*"]
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }
