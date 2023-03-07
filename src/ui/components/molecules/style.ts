@@ -52,8 +52,8 @@ export const CalendarWeekEndTd = styled.td<TdProps>`
   border: 1px solid #eee;
   ${({ today }) => {
     return today
-      ? `background-color : rgba(255,255,255,0.5)`
-      : `background-color: rgba(125,125,125,0.1)`
+      ? `background-color : rgba(255,255,255,0.5); color: white;`
+      : `background-color: rgba(253,231,21,0.8); color: black`
   }}
 `
 export const CalendarEmptyTd = styled.td`
@@ -74,6 +74,6 @@ export const CalendarWeekEnd = styled.div`
   margin: 8% 0 0 8%;
   font-size: 0.7rem;
   font-weight: bold;
-  color: white;
+  /* color: white; */
   /* color: ${V.G_SECONDARY_COLOR}; */
 `
