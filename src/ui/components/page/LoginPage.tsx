@@ -66,7 +66,7 @@ const LoginPage: FC = (): JSX.Element => {
       name: '로그인',
       onClick: handleSubmit,
     },
-    signupBtn: {
+    signUpBtn: {
       name: '회원가입',
     },
     title: {

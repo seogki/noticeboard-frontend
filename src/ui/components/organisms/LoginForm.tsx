@@ -9,7 +9,7 @@ interface LoginFormProps {
   email: FormInputProps
   password: FormInputProps
   submitBtn: FormButtonProps
-  signupBtn: FormButtonProps
+  signUpBtn: FormButtonProps
 }
 
 const LoginForm: FC<LoginFormProps> = (
@@ -23,7 +23,7 @@ const LoginForm: FC<LoginFormProps> = (
         <FormInput {...loginFormProps.password} />
         <FormButton {...loginFormProps.submitBtn} />
         <Link to="/Register" style={{ display: 'contents' }}>
-          <FormButton {...loginFormProps.signupBtn} />
+          <FormButton {...loginFormProps.signUpBtn} />
         </Link>
       </OS.FormInputContainer>
     </>
