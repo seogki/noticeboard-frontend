@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import Title from '@components/atoms/Title'
+import Title from '@ui/components/atoms/title/Title'
 
 export interface FormTitleProps {
   name: string

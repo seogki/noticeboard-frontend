@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import * as AS from './style'
+import * as AS from '../style'
 export interface RoundButtonProps {
   name: string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void

@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from '@redux/store'
 import { setLoginState } from '@redux/authSlice'
 import { Message } from '@interface/base'
-import Title from '@components/atoms/Title'
+import Title from '@ui/components/atoms/title/Title'
 import FormInput from '@ui/components/molecules/FormInput'
 function Login() {
   const navigate = useNavigate()

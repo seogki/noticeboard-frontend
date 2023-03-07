@@ -16,12 +16,16 @@ export const FormInputContainer = styled.form`
   width: 90%;
   height: 45%;
   margin: 0 auto 40% auto;
-  border-radius: 8px;
-  /* flex-direction: row; */
+  border-radius: ${V.G_BORDER_RADIUS};
   position: relative;
 
   display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: column;
+`
+
+export const CalendarTableContainer = styled.div`
+  width: 100%;
+  height: 95%;
 `

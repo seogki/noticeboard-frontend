@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import RoundButton from '@components/atoms/RoundButton'
+import RoundButton from '@components/atoms/button/RoundButton'
 import * as MS from './style'
 export interface FormButtonProps {
   name: string
