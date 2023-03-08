@@ -4,7 +4,7 @@ import CalendarTable from '@components/organisms/CalendarTable'
 import MainTemplate from '@components/templates/MainTemplate'
 import dayjs from 'dayjs'
 import { RootState, useAppDispatch, useAppSelector } from '@redux/store'
-import { setMonthDateList, today } from '@redux/calendarSlice'
+import { setMonthDateList, today } from '@redux/dateSlice'
 import { shallowEqual } from 'react-redux'
 
 interface DateObj {
@@ -18,7 +18,7 @@ interface DateObj {
 
 const MainPage: FC = () => {
   const dispatch = useAppDispatch()
-  const { todayDate, monthDateList } = useAppSelector((state) => state.calendar)
+  const { todayDate, monthDateList } = useAppSelector((state) => state.date)
 
   useEffect(() => {
     dispatch(today())

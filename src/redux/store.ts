@@ -1,11 +1,11 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import authSlice from './authSlice'
-import calendarSlice from './calendarSlice'
+import dateSlice from './dateSlice'
 
 const rootReducers = combineReducers({
   auth: authSlice.reducer,
-  calendar: calendarSlice.reducer,
+  date: dateSlice.reducer,
 })
 
 export const store = configureStore({

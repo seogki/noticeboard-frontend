@@ -26,7 +26,7 @@ const initialState: CalendarState = {
   monthDateList: [],
 }
 
-export const calendarSlice = createSlice({
+export const dateSlice = createSlice({
   name: 'calendar',
   initialState,
   reducers: {
@@ -47,7 +47,7 @@ export const calendarSlice = createSlice({
       let emptySize = 0
       if (startDayOfDayOfWeek !== 1) {
         emptySize = Math.abs(startDayOfDayOfWeek - 1)
-        console.log(emptySize, startDayOfDayOfWeek)
+        // console.log(emptySize, startDayOfDayOfWeek)
       }
       days += emptySize
       const monthDayList: DateObj[] = []
@@ -74,6 +74,6 @@ export const calendarSlice = createSlice({
 })
 
 export const { today, dateByString, setMonthDateList, clearMonthDateList } =
-  calendarSlice.actions
+  dateSlice.actions
 
-export default calendarSlice
+export default dateSlice
