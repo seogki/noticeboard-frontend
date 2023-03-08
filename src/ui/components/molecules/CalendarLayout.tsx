@@ -5,9 +5,9 @@ interface DateObj {
   dayOfWeek: number
   day: string
   date: string
-  today: boolean
   dayOfWeekKor: string
-  empty?: boolean
+  isToday: boolean
+  isEmpty?: boolean
 }
 export interface CalendarLayoutProps {
   dateList: DateObj[][]
@@ -25,13 +25,19 @@ const CalendarLayout: FC<CalendarLayoutProps> = (
               <tr key={trIndex}>
                 {list.map((data) => (
                   <>
-                    {!data.empty &&
+                    {!data.isEmpty &&
                     (data.dayOfWeek === 0 || data.dayOfWeek === 6) ? (
-                      <MS.CalendarWeekEndTd today={data.today} key={data.date}>
+                      <MS.CalendarWeekEndTd
+                        isToday={data.isToday}
+                        key={data.date}
+                      >
                         <MS.CalendarWeekEnd>{data.day}</MS.CalendarWeekEnd>
                       </MS.CalendarWeekEndTd>
-                    ) : !data.empty ? (
-                      <MS.CalendarWeekDayTd today={data.today} key={data.date}>
+                    ) : !data.isEmpty ? (
+                      <MS.CalendarWeekDayTd
+                        isToday={data.isToday}
+                        key={data.date}
+                      >
                         <MS.CalendarWeekDay>{data.day}</MS.CalendarWeekDay>
                       </MS.CalendarWeekDayTd>
                     ) : (

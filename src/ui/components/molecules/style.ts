@@ -35,23 +35,23 @@ const sevenDaySize = css`
   width: calc(100% / 7);
 `
 interface TdProps {
-  today: boolean
+  isToday: boolean
 }
 
 export const CalendarWeekDayTd = styled.td<TdProps>`
   width: ${sevenDaySize};
   box-sizing: border-box;
   border: 1px solid #eee;
-  ${({ today }) => {
-    return today ? `background-color : rgba(255,255,255,0.5)` : null
+  ${({ isToday }) => {
+    return isToday ? `background-color : rgba(255,255,255,0.5)` : null
   }}
 `
 export const CalendarWeekEndTd = styled.td<TdProps>`
   width: ${sevenDaySize};
   box-sizing: border-box;
   border: 1px solid #eee;
-  ${({ today }) => {
-    return today
+  ${({ isToday }) => {
+    return isToday
       ? `background-color : rgba(255,255,255,0.5); color: white;`
       : `background-color: rgba(253,231,21,0.8); color: black`
   }}
