@@ -14,6 +14,22 @@
     @content;
   }
 }
+
+@mixin tablet {
+  @media (min-width: #{variable.$G-breakpoint-tablet}) and (max-width: #{variable.$G-breakpoint-desktop - 1px}) {
+    html {
+      font-size: variable.$G-desktop-default-font-size;
+    }
+    @for $i from 1 through length(variable.$G-desktop-font-sizes) {
+      $size: nth(variable.$G-desktop-font-sizes, $i);
+      .fs-#{$i} {
+        font-size: $size;
+      }
+    }
+    @content;
+  }
+}
+
 @mixin desktop {
   @media (min-width: #{variable.$G-breakpoint-desktop}) {
     html {

@@ -2,19 +2,8 @@ import MyHeader from '@ui/Header/MyHeader'
 import { FC, useEffect } from 'react'
 import CalendarTable from '@components/organisms/CalendarTable'
 import MainTemplate from '@components/templates/MainTemplate'
-import dayjs from 'dayjs'
-import { RootState, useAppDispatch, useAppSelector } from '@redux/store'
+import { useAppDispatch, useAppSelector } from '@redux/store'
 import { setMonthDateList, today } from '@redux/dateSlice'
-import { shallowEqual } from 'react-redux'
-
-interface DateObj {
-  dayOfWeek: number
-  day: string
-  date: string
-  today: boolean
-  dayOfWeekKor: string
-  empty?: boolean
-}
 
 const MainPage: FC = () => {
   const dispatch = useAppDispatch()
@@ -26,7 +15,7 @@ const MainPage: FC = () => {
   }, [dispatch, todayDate])
   console.log(todayDate, monthDateList)
 
-  const [year, month, _] = todayDate.split('-')
+  const [year, month] = todayDate.split('-')
 
   const CalendarTableProps = {
     title: {

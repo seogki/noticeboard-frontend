@@ -1,14 +1,5 @@
 import styled from 'styled-components'
 import * as V from '@assets/styled/variable'
-interface styledProps {
-  isCenter: boolean
-}
-export const FormInput = styled.input`
-  /* height: 10%; */
-  /* width: 100%; */
-  /* margin: 0 auto 2%; */
-  border-radius: 8px;
-`
 
 export const RoundButton = styled.button`
   border-radius: ${V.G_BORDER_RADIUS};
@@ -18,7 +9,18 @@ export const RoundButton = styled.button`
   width: 100%;
   height: 100%;
 `
-
+interface styledProps {
+  isCenter: boolean
+}
+export const FormInput = styled.input`
+  border-radius: 8px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  &:hover,
+  &:active {
+    border: 1px solid ${V.G_SECONDARY_COLOR};
+  }
+`
 export const FormTitle = styled.h2<styledProps>`
   margin-bottom: 5%;
   @media screen and (min-width: 992px) {

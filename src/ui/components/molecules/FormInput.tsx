@@ -7,6 +7,7 @@ export interface FormInputProps {
   inputName: string
   placeholder: string
   type?: string
+  name: string
   labelProps: LabelProps
   invalid?: boolean
   disabled?: boolean

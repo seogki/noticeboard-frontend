@@ -1,6 +1,6 @@
 import { Message } from '@interface/base'
 import { signUp } from '@network/auth'
-import { useAppDispatch } from '@redux/store'
+// import { useAppDispatch } from '@redux/store'
 import MyHeader from '@ui/Header/MyHeader'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -9,7 +9,7 @@ import SignUpTemplate from '../templates/SignUpTemplate'
 
 const SignUpPage: FC = () => {
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
   const [values, setValues] = useState({
     memberEmail: '',
     memberNickname: '',

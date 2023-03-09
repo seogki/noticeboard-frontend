@@ -2,13 +2,17 @@
 
 ---
 
+create-react-app 으로 반든 프로젝트
+
 - #### 사용중인 라이브러리
-  1. create-react-app
-  2. scss
-  3. typescript
-  4. react-responsive
-  5. react-router-dom
-  6. craco
-  7. antd-desgin
-  8. prettier-eslint
-  9. jest
+
+  typescript
+  react-responsive
+  react-router-dom
+  redux-toolkit
+  craco
+  mui
+  prettier-eslint
+  jest
+  styled-component
+  dayjs

@@ -16,6 +16,9 @@ header {
     @include mixin.desktop {
       margin-left: 4%;
     }
+    @include mixin.tablet {
+      margin-left: 4%;
+    }
     align-self: center;
   }
 

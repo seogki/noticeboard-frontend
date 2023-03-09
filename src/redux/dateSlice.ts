@@ -18,12 +18,14 @@ interface DateObj {
 export interface CalendarState {
   todayDate: string
   monthDateList: DateObj[][]
+  monthDate: string
   date?: Dayjs
 }
 
 const initialState: CalendarState = {
   todayDate: '',
   monthDateList: [],
+  monthDate: '',
 }
 
 export const dateSlice = createSlice({
@@ -40,6 +42,9 @@ export const dateSlice = createSlice({
       state.monthDateList = []
     },
     setMonthDateList: (state, action: PayloadAction<string>) => {
+      if (state.monthDate === action.payload) return
+      state.monthDate = action.payload
+      clearMonthDateList()
       const [year, month, day] = action.payload.split('-')
       const startDayOfDayOfWeek = dayjs(`${year}-${month}-01`).day()
       const sevenDay = 7
