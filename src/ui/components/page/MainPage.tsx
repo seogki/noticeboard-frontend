@@ -1,98 +1,73 @@
-import MyHeader from '@ui/Header/MyHeader'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import CalendarTable from '@components/organisms/CalendarTable'
 import MainTemplate from '@components/templates/MainTemplate'
-import dayjs from 'dayjs'
-
-interface DateObj {
-  dayOfWeek: number
-  day: string
-  date: string
-  today: boolean
-  dayOfWeekKor: string
-  empty?: boolean
-}
+import { useAppDispatch, useAppSelector } from '@redux/store'
+import { setMonthDateList, today } from '@redux/dateSlice'
+import MyHeader from '../organisms/MyHeader'
 
 const MainPage: FC = () => {
-  const today: string = dayjs().format('YYYY-M-DD')
-  const [year, month, day] = today.split('-')
-  let days: number = dayjs().daysInMonth()
-  const todayDayOfWeek = dayjs(`${year}-${month}-01`).day()
+  const dispatch = useAppDispatch()
+  const { todayDate, monthDateList } = useAppSelector((state) => state.date)
 
-  let emptySize = 0
-  if (todayDayOfWeek !== 1) {
-    emptySize = Math.abs(todayDayOfWeek - 1)
-    console.log(emptySize, todayDayOfWeek)
-  }
-  days += emptySize
-  //   console.log(days)
-  const list: DateObj[] = []
-  const splitList: DateObj[][] = []
+  useEffect(() => {
+    dispatch(today())
+    dispatch(setMonthDateList(todayDate))
+  }, [dispatch, todayDate])
+  console.log(todayDate, monthDateList)
 
-  const convertDayOfWeekToKorean = (dayOfWeek: number): string => {
-    switch (dayOfWeek) {
-      case 0: {
-        return '일'
-      }
-      case 1: {
-        return '월'
-      }
-      case 2: {
-        return '화'
-      }
-      case 3: {
-        return '수'
-      }
-      case 4: {
-        return '목'
-      }
-      case 5: {
-        return '금'
-      }
-      case 6: {
-        return '토'
-      }
-      default: {
-        return '미확인'
-      }
-    }
-  }
+  const [year, month] = todayDate.split('-')
 
-  const init = () => {
-    for (let i = 0; i < days; i++) {
-      const dayNum = (i + 1 - emptySize).toString().padStart(2, '0')
-      const tmpDay = `${year}-${month}-${dayNum}`
-      const dayOfWeek = dayjs(tmpDay).day()
-      const dayObj = {
-        dayOfWeek,
-        day: (i + 1 - emptySize).toString(),
-        date: tmpDay,
-        today: dayNum === day,
-        empty: i + 1 - emptySize < 1,
-        dayOfWeekKor: convertDayOfWeekToKorean(dayOfWeek),
-      }
-      list.push(dayObj)
-    }
-    for (let i = 0; i < list.length; i += 7) {
-      splitList.push(list.slice(i, i + 7))
-    }
-    console.log(list)
-  }
-  init()
   const CalendarTableProps = {
     title: {
       name: `${year}.${month}`,
       isCenter: true,
     },
-    calander: {
-      dateList: splitList,
+    calendar: {
+      dateList: monthDateList,
+    },
+  }
+  const MyHeaderProps = {
+    box: {
+      sx: {
+        flexGrow: 1,
+      },
+    },
+    appBar: {
+      position: 'static' as 'static',
+    },
+    toolbar: {},
+    menuButton: {
+      iconButton: {
+        size: 'large' as 'large',
+        edge: 'start' as 'start',
+        color: 'inherit' as 'inherit',
+        'aria-label': 'menu',
+        sx: {
+          mr: 2,
+        },
+      },
+    },
+    typography: {
+      variant: 'h6' as 'h6',
+      component: 'div',
+      sx: {
+        flexGrow: 1,
+      },
+      name: 'S.Calendar',
+    },
+    linkLoginButton: {
+      linkButton: {
+        color: 'inherit' as 'inherit',
+        name: '로그인',
+        to: '/login',
+      },
     },
   }
 
   return (
     <>
       <MainTemplate
-        header={<MyHeader />}
+        header={<MyHeader {...MyHeaderProps} />}
         content={<CalendarTable {...CalendarTableProps} />}
       ></MainTemplate>
     </>

@@ -1,35 +1,36 @@
 import { Message } from '@interface/base'
 import { signUp } from '@network/auth'
-import { useAppDispatch } from '@redux/store'
-import MyHeader from '@ui/Header/MyHeader'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import MuiCheckbox from '../atoms/MuiCheckbox'
+import MyHeader from '../organisms/MyHeader'
 import SignUpForm from '../organisms/SignUpForm'
 import SignUpTemplate from '../templates/SignUpTemplate'
 
 const SignUpPage: FC = () => {
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
   const [values, setValues] = useState({
     memberEmail: '',
     memberNickname: '',
     memberPassword: '',
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    })
-  }
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const payload = { data: values }
+    if (!e.currentTarget) return
+    const data = new FormData(e.currentTarget)
+    const payload = {
+      data: {
+        memberEmail: data.get('memberEmail'),
+        memberNickname: data.get('memberNickname'),
+        memberPassword: data.get('memberPassword'),
+      },
+    }
     if (
-      values.memberEmail === '' ||
-      values.memberNickname === '' ||
-      values.memberPassword === ''
+      payload.data.memberEmail === '' ||
+      payload.data.memberNickname === '' ||
+      payload.data.memberPassword === ''
     ) {
       alert('모두 입력부탁드립니다')
       return
@@ -44,51 +45,106 @@ const SignUpPage: FC = () => {
   }
 
   const SignUpFormProps = {
-    email: {
-      inputName: '신규계정',
-      value: values.memberEmail,
+    container: {
+      component: 'main',
+      maxWidth: 'xs' as 'xs',
+    },
+    upperBox: {
+      sx: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      },
+    },
+    avatar: {
+      sx: {
+        m: 1,
+        bgcolor: 'secondary.main',
+      },
+    },
+    typography: {
+      component: 'h1',
+      variant: 'h5' as 'h5',
+      name: '회원가입',
+    },
+    innerBox: {
+      component: 'form' as 'form',
+      onSubmit: handleSubmit,
+      noValidate: true,
+      sx: {
+        mt: 1,
+      },
+    },
+    emailTextField: {
+      margin: 'normal' as 'normal',
+      required: true,
+      fullWidth: true,
+      id: 'memberEmail',
+      label: '계정',
       name: 'memberEmail',
-      onChange: handleChange,
-      placeholder: '이메일을 입력해주세요',
-      labelProps: {
-        name: '계정',
-      },
+      autoComplete: 'email',
+      autoFocus: true,
+      variant: 'standard' as 'standard',
     },
-    nickname: {
-      inputName: '신규닉네임',
-      value: values.memberNickname,
-      placeholder: '별명을 입력해주세요',
-
-      onChange: handleChange,
+    nicknameTextField: {
+      margin: 'normal' as 'normal',
+      required: true,
+      fullWidth: true,
+      id: 'memberNickname',
+      label: '명칭',
       name: 'memberNickname',
-      labelProps: {
-        name: '별명',
-      },
+      autoFocus: true,
+      variant: 'standard' as 'standard',
     },
-    password: {
-      inputName: '신규패스워드',
-      value: values.memberPassword,
-      placeholder: '8~12자리 비밀번호를 입력해주세요',
-      type: 'password',
-      onChange: handleChange,
+    passwordTextField: {
+      margin: 'normal' as 'normal',
+      required: true,
+      fullWidth: true,
+      id: 'memberPassword',
+      label: '비밀번호',
       name: 'memberPassword',
-      labelProps: {
-        name: '패스워드',
+      type: 'password',
+      autoComplete: 'current-password',
+      autoFocus: true,
+      variant: 'standard' as 'standard',
+    },
+    submitBtn: {
+      type: 'submit' as 'submit',
+      fullWidth: true,
+      variant: 'contained' as 'contained',
+      name: '회원가입',
+      sx: {
+        mt: 3,
+        mb: 2,
       },
     },
-    signUpBtn: {
-      name: '회원가입',
-      onClick: handleSubmit,
+    gridContainer: {
+      container: true,
     },
-    title: {
-      name: '회원가입',
-      isCenter: true,
+    gridFirstItem: {
+      item: true,
+      xs: true,
+    },
+    gridSecondItem: {
+      item: true,
+    },
+    forgetPasswordLink: {
+      linkButton: {
+        to: '/reset',
+        name: '비밀번호 재설정',
+      },
+    },
+    loginLink: {
+      linkButton: {
+        to: '/login',
+        name: '로그인',
+      },
     },
   }
   return (
     <>
       <SignUpTemplate
-        header={<MyHeader />}
+        // header={<MyHeader {...MyHeaderProps} />}
         content={<SignUpForm {...SignUpFormProps} />}
       ></SignUpTemplate>
     </>

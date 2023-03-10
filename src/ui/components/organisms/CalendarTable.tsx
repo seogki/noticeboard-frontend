@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import SmallTitle, { SmallTitleProps } from '../atoms/title/SmallTitle'
-import Calendarlayout, {
+import CalendarLayout, {
   CalendarLayoutProps,
 } from '../molecules/CalendarLayout'
 import * as OS from './style'
 
 export interface CalendarTableProps {
   title: SmallTitleProps
-  calander: CalendarLayoutProps
+  calendar: CalendarLayoutProps
 }
 
 const CalendarTable: FC<CalendarTableProps> = (
@@ -16,7 +16,7 @@ const CalendarTable: FC<CalendarTableProps> = (
   return (
     <OS.CalendarTableContainer>
       <SmallTitle {...calendarTableProps.title} />
-      <Calendarlayout {...calendarTableProps.calander} />
+      <CalendarLayout {...calendarTableProps.calendar} />
     </OS.CalendarTableContainer>
   )
 }
