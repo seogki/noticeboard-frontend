@@ -8,28 +8,26 @@ import {
   ContainerProps,
   AvatarProps,
   TextFieldProps,
-  FormControlLabelProps,
 } from '@mui/material'
 import MuiTypography, { CustomTypographyProps } from '../atoms/MuiTypography'
 import MuiButton, { CustomButtonProps } from '../atoms/MuiButton'
 import MuiAvatar from '../atoms/MuiAvatar'
 import MuiTextField from '../atoms/MuiTextField'
-import MuiFormControlLabel from '../atoms/MuiFormControlLabel'
 import MuiFormBox, { CustomFormBoxProps } from '../atoms/MuiFormBox'
 
-export interface SignUpFormProps {
+export interface ResetPasswordFormProps {
   container: ContainerProps
   upperBox: BoxProps
   innerBox: CustomFormBoxProps
   avatar: AvatarProps
   typography: CustomTypographyProps
   emailTextField: TextFieldProps
-  nicknameTextField: TextFieldProps
-  passwordTextField: TextFieldProps
   submitBtn: CustomButtonProps
 }
 
-const SignUpForm: FC<SignUpFormProps> = (props: SignUpFormProps) => {
+const ResetPasswordForm: FC<ResetPasswordFormProps> = (
+  props: ResetPasswordFormProps
+) => {
   return (
     <>
       <MuiContainer {...props.container}>
@@ -41,8 +39,6 @@ const SignUpForm: FC<SignUpFormProps> = (props: SignUpFormProps) => {
           <MuiTypography {...props.typography}></MuiTypography>
           <MuiFormBox {...props.innerBox}>
             <MuiTextField {...props.emailTextField} />
-            <MuiTextField {...props.nicknameTextField} />
-            <MuiTextField {...props.passwordTextField} />
             <MuiButton {...props.submitBtn}></MuiButton>
           </MuiFormBox>
         </MuiBox>
@@ -51,4 +47,4 @@ const SignUpForm: FC<SignUpFormProps> = (props: SignUpFormProps) => {
   )
 }
 
-export default SignUpForm
+export default ResetPasswordForm

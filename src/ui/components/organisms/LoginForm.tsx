@@ -10,19 +10,24 @@ import {
   TextFieldProps,
   FormControlLabelProps,
   GridProps,
-  LinkProps,
 } from '@mui/material'
 import MuiTypography, { CustomTypographyProps } from '../atoms/MuiTypography'
 import MuiButton, { CustomButtonProps } from '../atoms/MuiButton'
 import MuiAvatar from '../atoms/MuiAvatar'
 import MuiTextField from '../atoms/MuiTextField'
 import MuiFormControlLabel from '../atoms/MuiFormControlLabel'
-// import MuiGrid from '../atoms/MuiGrid'
-// import MuiLink from '../atoms/MuiLink'
+import MuiFormBox, { CustomFormBoxProps } from '../atoms/MuiFormBox'
+import MuiGrid from '../atoms/MuiGrid'
+import LinkForgetPasswordButton, {
+  LinkForgetPasswordButtonProps,
+} from '../molecules/LinkForgetPasswordButton'
+import LinkSignUpButton, {
+  LinkSignUpButtonProps,
+} from '../molecules/LinkSignUpButton'
 interface LoginFormProps {
   container: ContainerProps
   upperBox: BoxProps
-  innerBox: BoxProps
+  innerBox: CustomFormBoxProps
   avatar: AvatarProps
   typography: CustomTypographyProps
   emailTextField: TextFieldProps
@@ -30,8 +35,10 @@ interface LoginFormProps {
   formControlLabel: FormControlLabelProps
   submitBtn: CustomButtonProps
   gridContainer?: GridProps
-  gridItem?: GridProps
-  link?: LinkProps
+  gridFirstItem?: GridProps
+  gridSecondItem?: GridProps
+  forgetPasswordLink: LinkForgetPasswordButtonProps
+  signUpLink: LinkSignUpButtonProps
 }
 
 const LoginForm: FC<LoginFormProps> = (props: LoginFormProps): JSX.Element => {
@@ -44,17 +51,20 @@ const LoginForm: FC<LoginFormProps> = (props: LoginFormProps): JSX.Element => {
             <LockOutlinedIcon />
           </MuiAvatar>
           <MuiTypography {...props.typography}></MuiTypography>
-          <MuiBox {...props.innerBox}>
+          <MuiFormBox {...props.innerBox}>
             <MuiTextField {...props.emailTextField} />
             <MuiTextField {...props.passwordTextField} />
             <MuiFormControlLabel {...props.formControlLabel} />
             <MuiButton {...props.submitBtn}></MuiButton>
-          </MuiBox>
-          {/* <MuiGrid {...props.gridContainer}>
-            <MuiGrid {...props.gridItem}>
-              <MuiLink {...props.link}></MuiLink>
+          </MuiFormBox>
+          <MuiGrid {...props.gridContainer}>
+            <MuiGrid {...props.gridFirstItem}>
+              <LinkForgetPasswordButton {...props.forgetPasswordLink} />
             </MuiGrid>
-          </MuiGrid> */}
+            <MuiGrid {...props.gridSecondItem}>
+              <LinkSignUpButton {...props.signUpLink} />
+            </MuiGrid>
+          </MuiGrid>
         </MuiBox>
       </MuiContainer>
     </>

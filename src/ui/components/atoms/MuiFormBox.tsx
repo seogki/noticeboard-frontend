@@ -1,12 +1,12 @@
-import { FC, FormEventHandler } from 'react'
+import { ElementType, FC, FormEventHandler } from 'react'
 import { Box, BoxProps } from '@mui/material'
 
-export interface FormBoxProps {
-  component?: string
-  onSubmit?: (e: FormEventHandler) => Promise<void>
+export interface CustomFormBoxProps {
+  component: ElementType<any>
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
 }
 
-const MuiFormBox: FC<FormBoxProps> = (props: FormBoxProps) => {
+const MuiFormBox: FC<CustomFormBoxProps> = (props: CustomFormBoxProps) => {
   return (
     <>
       <Box {...props}></Box>

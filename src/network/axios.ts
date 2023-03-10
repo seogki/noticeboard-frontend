@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:3000',
+  //* baseURL localhost는 cors 문제로 인해 ip 설정해야함
+  baseURL: 'http://192.168.1.90:3000',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

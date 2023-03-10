@@ -4,17 +4,14 @@ import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MuiCheckbox from '../atoms/MuiCheckbox'
 import MyHeader from '../organisms/MyHeader'
+import ResetPasswordForm from '../organisms/ResetPasswordForm'
 import SignUpForm from '../organisms/SignUpForm'
+import ResetPasswordTemplate from '../templates/ResetPasswordTemplate'
 import SignUpTemplate from '../templates/SignUpTemplate'
 
-const SignUpPage: FC = () => {
+const ResetPasswordPage: FC = () => {
   const navigate = useNavigate()
   // const dispatch = useAppDispatch()
-  const [values, setValues] = useState({
-    memberEmail: '',
-    memberNickname: '',
-    memberPassword: '',
-  })
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -23,28 +20,22 @@ const SignUpPage: FC = () => {
     const payload = {
       data: {
         memberEmail: data.get('memberEmail'),
-        memberNickname: data.get('memberNickname'),
-        memberPassword: data.get('memberPassword'),
       },
     }
-    if (
-      payload.data.memberEmail === '' ||
-      payload.data.memberNickname === '' ||
-      payload.data.memberPassword === ''
-    ) {
-      alert('모두 입력부탁드립니다')
+    if (payload.data.memberEmail === '') {
+      alert('이메일을 입력부탁드립니다')
       return
     }
     const result: Message = await signUp(payload)
 
-    if (result.status === 'OK') {
-      navigate('/login')
-    } else {
-      alert(result.message ?? '에러 발생')
-    }
+    // if (result.status === 'OK') {
+    //   navigate('/login')
+    // } else {
+    //   alert(result.message ?? '에러 발생')
+    // }
   }
 
-  const SignUpFormProps = {
+  const ResetPasswordFormProps = {
     container: {
       component: 'main',
       maxWidth: 'xs' as 'xs',
@@ -65,7 +56,7 @@ const SignUpPage: FC = () => {
     typography: {
       component: 'h1',
       variant: 'h5' as 'h5',
-      name: '회원가입',
+      name: '비밀번호 재설정',
     },
     innerBox: {
       component: 'form' as 'form',
@@ -86,33 +77,11 @@ const SignUpPage: FC = () => {
       autoFocus: true,
       variant: 'standard' as 'standard',
     },
-    nicknameTextField: {
-      margin: 'normal' as 'normal',
-      required: true,
-      fullWidth: true,
-      id: 'memberNickname',
-      label: '명칭',
-      name: 'memberNickname',
-      autoFocus: true,
-      variant: 'standard' as 'standard',
-    },
-    passwordTextField: {
-      margin: 'normal' as 'normal',
-      required: true,
-      fullWidth: true,
-      id: 'memberPassword',
-      label: '비밀번호',
-      name: 'memberPassword',
-      type: 'password',
-      autoComplete: 'current-password',
-      autoFocus: true,
-      variant: 'standard' as 'standard',
-    },
     submitBtn: {
       type: 'submit' as 'submit',
       fullWidth: true,
       variant: 'contained' as 'contained',
-      name: '회원가입',
+      name: '비밀번호 재설정',
       sx: {
         mt: 3,
         mb: 2,
@@ -121,11 +90,10 @@ const SignUpPage: FC = () => {
   }
   return (
     <>
-      <SignUpTemplate
-        // header={<MyHeader {...MyHeaderProps} />}
-        content={<SignUpForm {...SignUpFormProps} />}
-      ></SignUpTemplate>
+      <ResetPasswordTemplate
+        content={<ResetPasswordForm {...ResetPasswordFormProps} />}
+      ></ResetPasswordTemplate>
     </>
   )
 }
-export default SignUpPage
+export default ResetPasswordPage

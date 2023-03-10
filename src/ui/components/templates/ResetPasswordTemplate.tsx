@@ -1,12 +1,14 @@
 import { FC } from 'react'
 import * as TS from './style'
 import MuiContainer from '../atoms/MuiContainer'
-export interface LoginTemplateProps {
+export interface ResetPasswordTemplateProps {
   header?: React.ReactNode
   content?: React.ReactNode
 }
 
-const LoginTemplate: FC<LoginTemplateProps> = (props: LoginTemplateProps) => {
+const ResetPasswordTemplate: FC<ResetPasswordTemplateProps> = (
+  props: ResetPasswordTemplateProps
+) => {
   return (
     <>
       <MuiContainer>
@@ -17,4 +19,4 @@ const LoginTemplate: FC<LoginTemplateProps> = (props: LoginTemplateProps) => {
   )
 }
 
-export default LoginTemplate
+export default ResetPasswordTemplate

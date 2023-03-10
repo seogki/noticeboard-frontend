@@ -1,21 +1,20 @@
 import { FC } from 'react'
+import MuiContainer from '../atoms/MuiContainer'
 import * as TS from './style'
-export interface SignUpemplateProps {
+export interface SignUpTemplateProps {
   header?: React.ReactNode
   content?: React.ReactNode
 }
 
-const SignUpTemplate: FC<SignUpemplateProps> = (
-  signUpemplateProps: SignUpemplateProps
+const SignUpTemplate: FC<SignUpTemplateProps> = (
+  props: SignUpTemplateProps
 ) => {
   return (
     <>
-      <TS.TemplateContainer>
-        <TS.Container>
-          <TS.Header>{signUpemplateProps.header}</TS.Header>
-          <TS.Content>{signUpemplateProps.content}</TS.Content>
-        </TS.Container>
-      </TS.TemplateContainer>
+      <MuiContainer>
+        {/* <TS.Header>{props.header}</TS.Header> */}
+        <TS.Content>{props.content}</TS.Content>
+      </MuiContainer>
     </>
   )
 }

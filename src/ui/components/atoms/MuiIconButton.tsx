@@ -10,7 +10,7 @@ const MuiIconButton: FC<CustomIconButtonProps> = (
 ) => {
   return (
     <>
-      <IconButton {...props}>{props.name}</IconButton>
+      <IconButton {...props}></IconButton>
     </>
   )
 }

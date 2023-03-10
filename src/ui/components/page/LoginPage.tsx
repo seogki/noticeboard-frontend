@@ -2,7 +2,7 @@ import { Message } from '@interface/base'
 import { login } from '@network/auth'
 import { setLoginState } from '@redux/authSlice'
 import { useAppDispatch } from '@redux/store'
-import { FC, FormEvent, useState } from 'react'
+import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MuiCheckbox from '../atoms/MuiCheckbox'
 import MyHeader from '../organisms/MyHeader'
@@ -12,26 +12,21 @@ import LoginTemplate from '../templates/LoginTemplate'
 const LoginPage: FC = (): JSX.Element => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const [values, setValues] = useState({
-    memberEmail: '',
-    memberPassword: '',
-  })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    })
+  if (localStorage.getItem('access-token')) {
+    navigate('/')
   }
 
-  const handleSubmit = async (
-    e: React.FormEvent<EventTarget | HTMLFormElement>
-  ) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!e.currentTarget) return
-    // const data = new FormData(e.currentTarget)
-    const payload = { data: values }
-    alert(`${values.memberEmail}, ${values.memberPassword}`)
+    const data = new FormData(e.currentTarget)
+    const payload = {
+      data: {
+        memberEmail: data.get('memberEmail'),
+        memberPassword: data.get('memberPassword'),
+      },
+    }
     const result: Message = await login(payload)
 
     if (result && result.data !== null && result.data.accessToken) {
@@ -56,13 +51,15 @@ const LoginPage: FC = (): JSX.Element => {
       position: 'static' as 'static',
     },
     toolbar: {},
-    iconButton: {
-      size: 'large' as 'large',
-      edge: 'start' as 'start',
-      color: 'inherit' as 'inherit',
-      'aria-label': 'menu',
-      sx: {
-        mr: 2,
+    menuButton: {
+      iconButton: {
+        size: 'large' as 'large',
+        edge: 'start' as 'start',
+        color: 'inherit' as 'inherit',
+        'aria-label': 'menu',
+        sx: {
+          mr: 2,
+        },
       },
     },
     typography: {
@@ -73,9 +70,13 @@ const LoginPage: FC = (): JSX.Element => {
       },
       name: 'S.Calendar',
     },
-    button: {
-      color: 'inherit' as 'inherit',
-      name: 'Login',
+
+    linkLoginButton: {
+      linkButton: {
+        color: 'inherit' as 'inherit',
+        name: 'Login',
+        to: '/login',
+      },
     },
   }
 
@@ -126,7 +127,7 @@ const LoginPage: FC = (): JSX.Element => {
       required: true,
       fullWidth: true,
       id: 'memberPassword',
-      label: '패스워드',
+      label: '비밀번호',
       name: 'memberPassword',
       type: 'password',
       autoComplete: 'current-password',
@@ -147,12 +148,34 @@ const LoginPage: FC = (): JSX.Element => {
         mb: 2,
       },
     },
+    gridContainer: {
+      container: true,
+    },
+    gridFirstItem: {
+      item: true,
+      xs: true,
+    },
+    gridSecondItem: {
+      item: true,
+    },
+    forgetPasswordLink: {
+      linkButton: {
+        to: '/reset',
+        name: '비밀번호 재설정',
+      },
+    },
+    signUpLink: {
+      linkButton: {
+        to: '/signup',
+        name: '회원가입',
+      },
+    },
   }
 
   return (
     <>
       <LoginTemplate
-        header={<MyHeader {...MyHeaderProps} />}
+        // header={<MyHeader {...MyHeaderProps} />}
         content={<LoginForm {...LoginFormProps} />}
       ></LoginTemplate>
     </>
