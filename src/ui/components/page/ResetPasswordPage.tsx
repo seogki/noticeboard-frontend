@@ -1,5 +1,5 @@
 import { Message } from '@interface/base'
-import { signUp } from '@network/auth'
+import { resetPassword } from '@network/auth'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MuiCheckbox from '../atoms/MuiCheckbox'
@@ -26,13 +26,13 @@ const ResetPasswordPage: FC = () => {
       alert('이메일을 입력부탁드립니다')
       return
     }
-    const result: Message = await signUp(payload)
+    const result: Message = await resetPassword(payload)
 
-    // if (result.status === 'OK') {
-    //   navigate('/login')
-    // } else {
-    //   alert(result.message ?? '에러 발생')
-    // }
+    if (result.status === 'OK') {
+      navigate('/change')
+    } else {
+      alert(result.message ?? '에러 발생')
+    }
   }
 
   const ResetPasswordFormProps = {
@@ -85,6 +85,28 @@ const ResetPasswordPage: FC = () => {
       sx: {
         mt: 3,
         mb: 2,
+      },
+    },
+    gridContainer: {
+      container: true,
+    },
+    gridFirstItem: {
+      item: true,
+      xs: true,
+    },
+    gridSecondItem: {
+      item: true,
+    },
+    changePasswordLink: {
+      linkButton: {
+        to: '/change',
+        name: '비밀번호 변경',
+      },
+    },
+    signUpLink: {
+      linkButton: {
+        to: '/signup',
+        name: '회원가입',
       },
     },
   }

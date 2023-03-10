@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import ResetPasswordPage from '@ui/components/page/ResetPasswordPage'
+import ChangePasswordPage from '@ui/components/page/ChangePasswordPage'
 const MyApp = styled.div`
   width: 100%;
   height: 100%;
@@ -34,6 +35,7 @@ function App() {
               <Route path="/login" element={<LoginPage />}></Route>
               <Route path="/signup" element={<SignUpPage />}></Route>
               <Route path="/reset" element={<ResetPasswordPage />}></Route>
+              <Route path="/change" element={<ChangePasswordPage />}></Route>
             </Routes>
           </BrowserRouter>
         </MyApp>

@@ -24,23 +24,25 @@ import LinkSignUpButton, {
 } from '../molecules/LinkSignUpButton'
 import LinkButton, { LinkButtonProps } from '../molecules/LinkButton'
 
-export interface ResetPasswordFormProps {
+export interface ChangePasswordFormProps {
   container: ContainerProps
   upperBox: BoxProps
   innerBox: CustomFormBoxProps
   avatar: AvatarProps
   typography: CustomTypographyProps
-  emailTextField: TextFieldProps
+  oldPasswordTextField: TextFieldProps
+  newPasswordTextField: TextFieldProps
+  correctPasswordTextField: TextFieldProps
   submitBtn: CustomButtonProps
   gridContainer?: GridProps
   gridFirstItem?: GridProps
   gridSecondItem?: GridProps
-  changePasswordLink: LinkButtonProps
-  signUpLink: LinkButtonProps
+  resetPasswordLink: LinkButtonProps
+  signUpLink: LinkSignUpButtonProps
 }
 
-const ResetPasswordForm: FC<ResetPasswordFormProps> = (
-  props: ResetPasswordFormProps
+const ChangePasswordForm: FC<ChangePasswordFormProps> = (
+  props: ChangePasswordFormProps
 ) => {
   return (
     <>
@@ -52,12 +54,14 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = (
           </MuiAvatar>
           <MuiTypography {...props.typography}></MuiTypography>
           <MuiFormBox {...props.innerBox}>
-            <MuiTextField {...props.emailTextField} />
+            <MuiTextField {...props.oldPasswordTextField} />
+            <MuiTextField {...props.newPasswordTextField} />
+            <MuiTextField {...props.correctPasswordTextField} />
             <MuiButton {...props.submitBtn}></MuiButton>
           </MuiFormBox>
           <MuiGrid {...props.gridContainer}>
             <MuiGrid {...props.gridFirstItem}>
-              <LinkButton {...props.changePasswordLink} />
+              <LinkButton {...props.resetPasswordLink} />
             </MuiGrid>
             <MuiGrid {...props.gridSecondItem}>
               <LinkButton {...props.signUpLink} />
@@ -69,4 +73,4 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = (
   )
 }
 
-export default ResetPasswordForm
+export default ChangePasswordForm

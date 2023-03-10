@@ -1,20 +1,14 @@
 import { Message } from '@interface/base'
-import { signUp } from '@network/auth'
+import { resetPassword } from '@network/auth'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MuiCheckbox from '../atoms/MuiCheckbox'
-import MyHeader from '../organisms/MyHeader'
-import SignUpForm from '../organisms/SignUpForm'
-import SignUpTemplate from '../templates/SignUpTemplate'
+import ChangePasswordForm from '../organisms/ChangePasswordForm'
+import ChangePasswordTemplate from '../templates/ChangePasswordTemplate'
 
-const SignUpPage: FC = () => {
+const ChangePasswordPage: FC = () => {
   const navigate = useNavigate()
   // const dispatch = useAppDispatch()
-  const [values, setValues] = useState({
-    memberEmail: '',
-    memberNickname: '',
-    memberPassword: '',
-  })
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -22,29 +16,25 @@ const SignUpPage: FC = () => {
     const data = new FormData(e.currentTarget)
     const payload = {
       data: {
-        memberEmail: data.get('memberEmail'),
-        memberNickname: data.get('memberNickname'),
-        memberPassword: data.get('memberPassword'),
+        memberOldPassword: data.get('memberOldPassword'),
+        memberNewPassword: data.get('memberNewPassword'),
+        memberCorrectPassword: data.get('memberCorrectPassword'),
       },
     }
-    if (
-      payload.data.memberEmail === '' ||
-      payload.data.memberNickname === '' ||
-      payload.data.memberPassword === ''
-    ) {
-      alert('모두 입력부탁드립니다')
-      return
-    }
-    const result: Message = await signUp(payload)
+    // if (payload.data.memberEmail === '') {
+    //   alert('이메일을 입력부탁드립니다')
+    //   return
+    // }
+    // const result: Message = await resetPassword(payload)
 
-    if (result.status === 'OK') {
-      navigate('/login')
-    } else {
-      alert(result.message ?? '에러 발생')
-    }
+    // if (result.status === 'OK') {
+    //   navigate('/login')
+    // } else {
+    //   alert(result.message ?? '에러 발생')
+    // }
   }
 
-  const SignUpFormProps = {
+  const ChangePasswordPageFormProps = {
     container: {
       component: 'main',
       maxWidth: 'xs' as 'xs',
@@ -65,7 +55,7 @@ const SignUpPage: FC = () => {
     typography: {
       component: 'h1',
       variant: 'h5' as 'h5',
-      name: '회원가입',
+      name: '비밀번호 변경',
     },
     innerBox: {
       component: 'form' as 'form',
@@ -75,34 +65,37 @@ const SignUpPage: FC = () => {
         mt: 1,
       },
     },
-    emailTextField: {
+    oldPasswordTextField: {
       margin: 'normal' as 'normal',
       required: true,
       fullWidth: true,
-      id: 'memberEmail',
-      label: '계정',
-      name: 'memberEmail',
-      autoComplete: 'email',
+      id: 'memberOldPassword',
+      label: '이전 비밀번호',
+      name: 'memberOldPassword',
+      type: 'password',
+      autoComplete: 'current-password',
       autoFocus: true,
       variant: 'standard' as 'standard',
     },
-    nicknameTextField: {
+    newPasswordTextField: {
       margin: 'normal' as 'normal',
       required: true,
       fullWidth: true,
-      id: 'memberNickname',
-      label: '명칭',
-      name: 'memberNickname',
+      id: 'memberNewPassword',
+      label: '새로운 비밀번호',
+      name: 'memberNewPassword',
+      type: 'password',
+      autoComplete: 'current-password',
       autoFocus: true,
       variant: 'standard' as 'standard',
     },
-    passwordTextField: {
+    correctPasswordTextField: {
       margin: 'normal' as 'normal',
       required: true,
       fullWidth: true,
-      id: 'memberPassword',
-      label: '비밀번호',
-      name: 'memberPassword',
+      id: 'memberCorrectPassword',
+      label: '비밀번호 확인',
+      name: 'memberCorrectPassword',
       type: 'password',
       autoComplete: 'current-password',
       autoFocus: true,
@@ -112,7 +105,7 @@ const SignUpPage: FC = () => {
       type: 'submit' as 'submit',
       fullWidth: true,
       variant: 'contained' as 'contained',
-      name: '회원가입',
+      name: '비밀번호 변경',
       sx: {
         mt: 3,
         mb: 2,
@@ -128,26 +121,25 @@ const SignUpPage: FC = () => {
     gridSecondItem: {
       item: true,
     },
-    forgetPasswordLink: {
+    resetPasswordLink: {
       linkButton: {
         to: '/reset',
         name: '비밀번호 재설정',
       },
     },
-    loginLink: {
+    signUpLink: {
       linkButton: {
-        to: '/login',
-        name: '로그인',
+        to: '/signup',
+        name: '회원가입',
       },
     },
   }
   return (
     <>
-      <SignUpTemplate
-        // header={<MyHeader {...MyHeaderProps} />}
-        content={<SignUpForm {...SignUpFormProps} />}
-      ></SignUpTemplate>
+      <ChangePasswordTemplate
+        content={<ChangePasswordForm {...ChangePasswordPageFormProps} />}
+      ></ChangePasswordTemplate>
     </>
   )
 }
-export default SignUpPage
+export default ChangePasswordPage
