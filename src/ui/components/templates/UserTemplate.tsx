@@ -2,13 +2,13 @@ import { ContainerProps } from '@mui/system/Container'
 import { FC } from 'react'
 import MuiContainer from '../atoms/MuiContainer'
 import * as TS from './style'
-export interface MainTemplateProps {
+export interface UserTemplateProps {
   header?: React.ReactNode
   content?: React.ReactNode
   container: ContainerProps
 }
 
-const MainTemplate: FC<MainTemplateProps> = (props: MainTemplateProps) => {
+const UserTemplate: FC<UserTemplateProps> = (props: UserTemplateProps) => {
   return (
     <>
       <MuiContainer {...props.container}>
@@ -21,4 +21,4 @@ const MainTemplate: FC<MainTemplateProps> = (props: MainTemplateProps) => {
   )
 }
 
-export default MainTemplate
+export default UserTemplate

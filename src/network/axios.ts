@@ -1,14 +1,25 @@
 import axios from 'axios'
 
 export const instance = axios.create({
-  //* baseURL localhost는 cors 문제로 인해 ip 설정해야함
-  baseURL: 'http://192.168.1.90:3000',
+  //* baseUrl dev시 ip주소 설정을 하지 않아야지만 package.json proxy가 먹힘
+  // baseURL: 'http://192.168.1.90:3000',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
     withCredentials: true,
-    Authorization: localStorage.getItem('access-token'),
   },
 })
+
+instance.interceptors.request.use(
+  (config) => {
+    config.headers.Authorization = `Bearer ${localStorage.getItem(
+      'access-token'
+    )}`
+    return config
+  },
+  function (error) {
+    return Promise.reject(error)
+  }
+)
 
 export default instance

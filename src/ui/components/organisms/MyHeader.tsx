@@ -6,13 +6,14 @@ import MuiBox from '../atoms/MuiBox'
 import MuiAppBar from '../atoms/MuiAppBar'
 import MuiToolbar from '../atoms/MuiToolbar'
 import MuiTypography, { CustomTypographyProps } from '../atoms/MuiTypography'
-import MuiButton, { CustomButtonProps } from '../atoms/MuiButton'
 import MenuIconButton, {
   MenuIconButtonProps,
 } from '../molecules/MenuIconButton'
-import LinkLoginButton, {
-  LinkLoginButtonProps,
-} from '../molecules/LinkLoginButton'
+import LinkButton, { LinkButtonProps } from '../molecules/LinkButton'
+import UserIconButton, {
+  UserIconButtonProps,
+} from '../molecules/UserIconButton'
+import MuiStack from '../atoms/MuiStack'
 
 export interface MyHeaderProps {
   box: BoxProps
@@ -20,7 +21,10 @@ export interface MyHeaderProps {
   toolbar: ToolbarProps
   menuButton: MenuIconButtonProps
   typography: CustomTypographyProps
-  linkLoginButton: LinkLoginButtonProps
+  linkLoginButton: LinkButtonProps
+  linkSignupButton: LinkButtonProps
+  userIconButton: UserIconButtonProps
+  options: { isLogin: boolean }
 }
 
 const MyHeader: FC<MyHeaderProps> = (props: MyHeaderProps) => {
@@ -29,9 +33,18 @@ const MyHeader: FC<MyHeaderProps> = (props: MyHeaderProps) => {
       <MuiBox {...props.box}>
         <MuiAppBar {...props.appBar}>
           <MuiToolbar {...props.toolbar}>
-            <MenuIconButton {...props.menuButton}></MenuIconButton>
+            {/* <MenuIconButton {...props.menuButton}></MenuIconButton> */}
             <MuiTypography {...props.typography}></MuiTypography>
-            <LinkLoginButton {...props.linkLoginButton}></LinkLoginButton>
+            {props.options.isLogin ? (
+              <UserIconButton {...props.userIconButton}></UserIconButton>
+            ) : (
+              <>
+                <MuiStack spacing={1} direction={'row'}>
+                  <LinkButton {...props.linkLoginButton}></LinkButton>
+                  <LinkButton {...props.linkSignupButton}></LinkButton>
+                </MuiStack>
+              </>
+            )}
           </MuiToolbar>
         </MuiAppBar>
       </MuiBox>

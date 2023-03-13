@@ -35,7 +35,7 @@ const SignUpPage: FC = () => {
       alert('모두 입력부탁드립니다')
       return
     }
-    const result: Message = await signUp(payload)
+    const result = await signUp(payload)
 
     if (result.status === 'OK') {
       navigate('/login')
@@ -141,9 +141,19 @@ const SignUpPage: FC = () => {
       },
     },
   }
+  const pageProps = {
+    container: {
+      maxWidth: false as false,
+      disableGutters: true,
+      sx: {
+        height: '100vh',
+      },
+    },
+  }
   return (
     <>
       <SignUpTemplate
+        {...pageProps}
         // header={<MyHeader {...MyHeaderProps} />}
         content={<SignUpForm {...SignUpFormProps} />}
       ></SignUpTemplate>

@@ -15,14 +15,8 @@ import MuiButton, { CustomButtonProps } from '../atoms/MuiButton'
 import MuiAvatar from '../atoms/MuiAvatar'
 import MuiTextField from '../atoms/MuiTextField'
 import MuiFormBox, { CustomFormBoxProps } from '../atoms/MuiFormBox'
-import LinkLoginButton, {
-  LinkLoginButtonProps,
-} from '../molecules/LinkLoginButton'
-import MuiGrid from '../atoms/MuiGrid'
-import LinkSignUpButton, {
-  LinkSignUpButtonProps,
-} from '../molecules/LinkSignUpButton'
 import LinkButton, { LinkButtonProps } from '../molecules/LinkButton'
+import MuiGrid from '../atoms/MuiGrid'
 
 export interface ResetPasswordFormProps {
   container: ContainerProps

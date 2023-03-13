@@ -18,62 +18,104 @@ export const FormButtonContainer = styled.div`
   width: 84%;
   height: 36px;
 `
-
-export const CalendarLayoutContainer = styled.div`
-  width: 100%;
-  height: 100%;
-`
 export const CalendarTable = styled.table`
   width: 90%;
   margin-left: 5%;
   height: 60%;
   table-layout: fixed;
   border-collapse: collapse;
+
+  tr th {
+    /* color: white; */
+    padding: 2%;
+  }
+`
+
+const blueColor = css`
+  color: #89cff0;
+`
+const redColor = css`
+  color: #e30b5c;
+`
+
+export const SatTh = styled.th`
+  ${blueColor};
+`
+export const SunTh = styled.th`
+  ${redColor};
 `
 
 const sevenDaySize = css`
   width: calc(100% / 7);
 `
+
+const hlightColor = css`
+  /* color: black; */
+  color: #00ff7f;
+`
+const hlightBgColor = css`
+  background-color: #00ff7f;
+`
 interface TdProps {
   isToday: boolean
+  dayOfWeekKor?: string
 }
 
 export const CalendarWeekDayTd = styled.td<TdProps>`
   width: ${sevenDaySize};
   box-sizing: border-box;
-  border: 1px solid #eee;
+
   ${({ isToday }) => {
-    return isToday ? `background-color : rgba(255,255,255,0.5)` : null
+    return isToday ? `${hlightColor}` : undefined
   }}
 `
 export const CalendarWeekEndTd = styled.td<TdProps>`
   width: ${sevenDaySize};
   box-sizing: border-box;
-  border: 1px solid #eee;
-  ${({ isToday }) => {
+
+  ${({ dayOfWeekKor, isToday }) => {
     return isToday
-      ? `background-color : rgba(255,255,255,0.5); color: white;`
-      : `background-color: rgba(253,231,21,0.8); color: black`
+      ? `${hlightColor}`
+      : dayOfWeekKor === '일'
+      ? `${redColor}`
+      : `${blueColor}`
   }}
 `
 export const CalendarEmptyTd = styled.td`
   width: ${sevenDaySize};
   box-sizing: border-box;
-  border: 1px solid #eee;
 `
 
-export const CalendarWeekDay = styled.div`
-  height: 92%;
-  margin: 8% 0 0 8%;
-  font-size: 0.7rem;
+interface MyDivProps {
+  isToday: boolean
+}
+
+export const CalendarWeekDay = styled.div<MyDivProps>`
+  /* height: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
-  color: white;
+  /* ${({ isToday }) => {
+    return isToday
+      ? `${hlightBgColor}; border-radius: 50%;width: 4vmin;
+      height: 4vmin;
+      margin: auto;`
+      : undefined
+  }} */
 `
-export const CalendarWeekEnd = styled.div`
-  height: 92%;
-  margin: 8% 0 0 8%;
-  font-size: 0.7rem;
+export const CalendarWeekEnd = styled.div<MyDivProps>`
+  /* height: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
-  /* color: white; */
-  /* color: ${V.G_SECONDARY_COLOR}; */
+
+  /* ${({ isToday }) => {
+    return isToday
+      ? `${hlightBgColor}; border-radius: 50%; width: 4vmin;
+      height: 4vmin;
+      margin: auto;`
+      : undefined
+  }} */
 `
