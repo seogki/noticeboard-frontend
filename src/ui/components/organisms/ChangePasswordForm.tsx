@@ -15,14 +15,8 @@ import MuiButton, { CustomButtonProps } from '../atoms/MuiButton'
 import MuiAvatar from '../atoms/MuiAvatar'
 import MuiTextField from '../atoms/MuiTextField'
 import MuiFormBox, { CustomFormBoxProps } from '../atoms/MuiFormBox'
-import LinkLoginButton, {
-  LinkLoginButtonProps,
-} from '../molecules/LinkLoginButton'
-import MuiGrid from '../atoms/MuiGrid'
-import LinkSignUpButton, {
-  LinkSignUpButtonProps,
-} from '../molecules/LinkSignUpButton'
 import LinkButton, { LinkButtonProps } from '../molecules/LinkButton'
+import MuiGrid from '../atoms/MuiGrid'
 
 export interface ChangePasswordFormProps {
   container: ContainerProps
@@ -30,6 +24,7 @@ export interface ChangePasswordFormProps {
   innerBox: CustomFormBoxProps
   avatar: AvatarProps
   typography: CustomTypographyProps
+  emailTextField: TextFieldProps
   oldPasswordTextField: TextFieldProps
   newPasswordTextField: TextFieldProps
   correctPasswordTextField: TextFieldProps
@@ -38,7 +33,7 @@ export interface ChangePasswordFormProps {
   gridFirstItem?: GridProps
   gridSecondItem?: GridProps
   resetPasswordLink: LinkButtonProps
-  signUpLink: LinkSignUpButtonProps
+  signUpLink: LinkButtonProps
 }
 
 const ChangePasswordForm: FC<ChangePasswordFormProps> = (
@@ -54,6 +49,7 @@ const ChangePasswordForm: FC<ChangePasswordFormProps> = (
           </MuiAvatar>
           <MuiTypography {...props.typography}></MuiTypography>
           <MuiFormBox {...props.innerBox}>
+            <MuiTextField {...props.emailTextField} />
             <MuiTextField {...props.oldPasswordTextField} />
             <MuiTextField {...props.newPasswordTextField} />
             <MuiTextField {...props.correctPasswordTextField} />

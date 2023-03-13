@@ -1,9 +1,11 @@
 import { FC } from 'react'
 import * as TS from './style'
 import MuiContainer from '../atoms/MuiContainer'
+import { ContainerProps } from '@mui/material'
 export interface ChangePasswordTemplateProps {
   header?: React.ReactNode
   content?: React.ReactNode
+  container: ContainerProps
 }
 
 const ChangePasswordTemplate: FC<ChangePasswordTemplateProps> = (
@@ -11,8 +13,8 @@ const ChangePasswordTemplate: FC<ChangePasswordTemplateProps> = (
 ) => {
   return (
     <>
-      <MuiContainer>
-        <TS.Header>{props.header}</TS.Header>
+      <MuiContainer {...props.container}>
+        {/* <TS.Header>{props.header}</TS.Header> */}
         <TS.Content>{props.content}</TS.Content>
       </MuiContainer>
     </>

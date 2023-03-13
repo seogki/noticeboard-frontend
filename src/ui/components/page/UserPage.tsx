@@ -1,39 +1,24 @@
-import { FC, useEffect } from 'react'
-import CalendarTable from '@components/organisms/CalendarTable'
-import MainTemplate from '@components/templates/MainTemplate'
-import { useAppDispatch, useAppSelector } from '@redux/store'
-import { setMonthDateList, today } from '@redux/dateSlice'
+import { FC } from 'react'
 import MyHeader from '../organisms/MyHeader'
-import { useNavigate } from 'react-router-dom'
+import UserTemplate from '../templates/UserTemplate'
+import UserInfo from '../organisms/UserInfo'
 
-const MainPage: FC = () => {
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
-  const { todayDate, monthDateList } = useAppSelector((state) => state.date)
-  // const { isLogin } = useAppSelector((state) => state.auth)
-  useEffect(() => {
-    dispatch(today())
-    dispatch(setMonthDateList(todayDate))
-  }, [dispatch, todayDate])
-  console.log(todayDate, monthDateList)
-
-  const [year, month] = todayDate.split('-')
-
-  const navigateToUser = () => {
-    navigate('/user')
-  }
-
-  const CalendarTableProps = {
-    title: {
-      name: `${year}.${month}`,
-      isCenter: true,
-    },
-    calendar: {
-      dateList: monthDateList,
+const UserPage: FC = () => {
+  const UserInfoProps = {
+    container: {
+      sx: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      },
     },
     box: {
       sx: {
-        height: '100vh',
+        flexGrow: 1,
+        boxShadow: 1,
+        borderRadius: 2,
+        p: 2,
+        height: '80vh',
       },
     },
   }
@@ -86,7 +71,6 @@ const MainPage: FC = () => {
     userIconButton: {
       iconButton: {
         color: 'inherit' as 'inherit',
-        onClick: navigateToUser,
       },
     },
     options: {
@@ -106,13 +90,13 @@ const MainPage: FC = () => {
 
   return (
     <>
-      <MainTemplate
+      <UserTemplate
         {...pageProps}
         header={<MyHeader {...MyHeaderProps} />}
-        content={<CalendarTable {...CalendarTableProps} />}
-      ></MainTemplate>
+        content={<UserInfo {...UserInfoProps} />}
+      ></UserTemplate>
     </>
   )
 }
 
-export default MainPage
+export default UserPage

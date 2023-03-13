@@ -30,3 +30,13 @@ export async function resetPassword(payload: { path?: any; data?: any }) {
     return undefined
   }
 }
+export async function changePassword(payload: { path?: any; data?: any }) {
+  try {
+    const response = await instance.post('/api/auth/change', payload.data)
+    const { data } = response
+    return data
+  } catch (e) {
+    console.error(e)
+    return undefined
+  }
+}

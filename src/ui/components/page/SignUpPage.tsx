@@ -141,9 +141,19 @@ const SignUpPage: FC = () => {
       },
     },
   }
+  const pageProps = {
+    container: {
+      maxWidth: false as false,
+      disableGutters: true,
+      sx: {
+        height: '100vh',
+      },
+    },
+  }
   return (
     <>
       <SignUpTemplate
+        {...pageProps}
         // header={<MyHeader {...MyHeaderProps} />}
         content={<SignUpForm {...SignUpFormProps} />}
       ></SignUpTemplate>

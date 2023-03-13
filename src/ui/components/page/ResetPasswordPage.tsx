@@ -110,9 +110,19 @@ const ResetPasswordPage: FC = () => {
       },
     },
   }
+  const pageProps = {
+    container: {
+      maxWidth: false as false,
+      disableGutters: true,
+      sx: {
+        height: '100vh',
+      },
+    },
+  }
   return (
     <>
       <ResetPasswordTemplate
+        {...pageProps}
         content={<ResetPasswordForm {...ResetPasswordFormProps} />}
       ></ResetPasswordTemplate>
     </>

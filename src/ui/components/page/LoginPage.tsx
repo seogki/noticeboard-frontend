@@ -13,10 +13,6 @@ const LoginPage: FC = (): JSX.Element => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  if (localStorage.getItem('access-token')) {
-    navigate('/')
-  }
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!e.currentTarget) return
@@ -39,45 +35,6 @@ const LoginPage: FC = (): JSX.Element => {
       alert('존재하지않는 계정입니다')
       //wrong Password or email
     }
-  }
-
-  const MyHeaderProps = {
-    box: {
-      sx: {
-        flexGrow: 1,
-      },
-    },
-    appBar: {
-      position: 'static' as 'static',
-    },
-    toolbar: {},
-    menuButton: {
-      iconButton: {
-        size: 'large' as 'large',
-        edge: 'start' as 'start',
-        color: 'inherit' as 'inherit',
-        'aria-label': 'menu',
-        sx: {
-          mr: 2,
-        },
-      },
-    },
-    typography: {
-      variant: 'h6' as 'h6',
-      component: 'div',
-      sx: {
-        flexGrow: 1,
-      },
-      name: 'S.Calendar',
-    },
-
-    linkLoginButton: {
-      linkButton: {
-        color: 'inherit' as 'inherit',
-        name: 'Login',
-        to: '/login',
-      },
-    },
   }
 
   const LoginFormProps = {
@@ -171,10 +128,20 @@ const LoginPage: FC = (): JSX.Element => {
       },
     },
   }
+  const pageProps = {
+    container: {
+      maxWidth: false as false,
+      disableGutters: true,
+      sx: {
+        height: '100vh',
+      },
+    },
+  }
 
   return (
     <>
       <LoginTemplate
+        {...pageProps}
         // header={<MyHeader {...MyHeaderProps} />}
         content={<LoginForm {...LoginFormProps} />}
       ></LoginTemplate>

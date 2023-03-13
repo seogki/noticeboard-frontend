@@ -4,15 +4,23 @@ import { Link as RouterLink, To } from 'react-router-dom'
 export interface RouterLinkButtonProps extends ButtonProps {
   name?: string
   to: To
+  variant?: 'outlined' | 'text' | 'contained'
 }
 
 const RouterLinkButton: FC<RouterLinkButtonProps> = ({
   name,
   to,
+  variant,
+  startIcon,
 }: RouterLinkButtonProps) => {
   return (
     <>
-      <Button component={RouterLink} to={to}>
+      <Button
+        component={RouterLink}
+        to={to}
+        variant={variant}
+        startIcon={startIcon}
+      >
         {name}
       </Button>
     </>

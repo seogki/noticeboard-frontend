@@ -9,11 +9,10 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import ResetPasswordPage from '@ui/components/page/ResetPasswordPage'
 import ChangePasswordPage from '@ui/components/page/ChangePasswordPage'
+import UserPage from '@ui/components/page/UserPage'
 const MyApp = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-wrap: wrap;
 `
 
 const darkTheme = createTheme({
@@ -36,6 +35,7 @@ function App() {
               <Route path="/signup" element={<SignUpPage />}></Route>
               <Route path="/reset" element={<ResetPasswordPage />}></Route>
               <Route path="/change" element={<ChangePasswordPage />}></Route>
+              <Route path="/user" element={<UserPage />}></Route>
             </Routes>
           </BrowserRouter>
         </MyApp>

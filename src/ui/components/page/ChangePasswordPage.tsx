@@ -1,8 +1,7 @@
 import { Message } from '@interface/base'
-import { resetPassword } from '@network/auth'
-import { FC, useState } from 'react'
+import { changePassword } from '@network/auth'
+import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import MuiCheckbox from '../atoms/MuiCheckbox'
 import ChangePasswordForm from '../organisms/ChangePasswordForm'
 import ChangePasswordTemplate from '../templates/ChangePasswordTemplate'
 
@@ -16,22 +15,19 @@ const ChangePasswordPage: FC = () => {
     const data = new FormData(e.currentTarget)
     const payload = {
       data: {
+        memberEmail: data.get('memberEmail'),
         memberOldPassword: data.get('memberOldPassword'),
         memberNewPassword: data.get('memberNewPassword'),
-        memberCorrectPassword: data.get('memberCorrectPassword'),
+        memberCheckPassword: data.get('memberCheckPassword'),
       },
     }
-    // if (payload.data.memberEmail === '') {
-    //   alert('이메일을 입력부탁드립니다')
-    //   return
-    // }
-    // const result: Message = await resetPassword(payload)
+    const result: Message = await changePassword(payload)
 
-    // if (result.status === 'OK') {
-    //   navigate('/login')
-    // } else {
-    //   alert(result.message ?? '에러 발생')
-    // }
+    if (result.status === 'OK') {
+      navigate('/login')
+    } else {
+      alert(result.message ?? '에러 발생')
+    }
   }
 
   const ChangePasswordPageFormProps = {
@@ -65,6 +61,17 @@ const ChangePasswordPage: FC = () => {
         mt: 1,
       },
     },
+    emailTextField: {
+      margin: 'normal' as 'normal',
+      required: true,
+      fullWidth: true,
+      id: 'memberEmail',
+      label: '계정',
+      name: 'memberEmail',
+      autoComplete: 'email',
+      autoFocus: true,
+      variant: 'standard' as 'standard',
+    },
     oldPasswordTextField: {
       margin: 'normal' as 'normal',
       required: true,
@@ -93,9 +100,9 @@ const ChangePasswordPage: FC = () => {
       margin: 'normal' as 'normal',
       required: true,
       fullWidth: true,
-      id: 'memberCorrectPassword',
+      id: 'memberCheckPassword',
       label: '비밀번호 확인',
-      name: 'memberCorrectPassword',
+      name: 'memberCheckPassword',
       type: 'password',
       autoComplete: 'current-password',
       autoFocus: true,
@@ -134,9 +141,20 @@ const ChangePasswordPage: FC = () => {
       },
     },
   }
+
+  const pageProps = {
+    container: {
+      maxWidth: false as false,
+      disableGutters: true,
+      sx: {
+        height: '100vh',
+      },
+    },
+  }
   return (
     <>
       <ChangePasswordTemplate
+        {...pageProps}
         content={<ChangePasswordForm {...ChangePasswordPageFormProps} />}
       ></ChangePasswordTemplate>
     </>
