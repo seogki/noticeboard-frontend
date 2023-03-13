@@ -13,6 +13,7 @@ import LinkButton, { LinkButtonProps } from '../molecules/LinkButton'
 import UserIconButton, {
   UserIconButtonProps,
 } from '../molecules/UserIconButton'
+import MuiStack from '../atoms/MuiStack'
 
 export interface MyHeaderProps {
   box: BoxProps
@@ -32,14 +33,16 @@ const MyHeader: FC<MyHeaderProps> = (props: MyHeaderProps) => {
       <MuiBox {...props.box}>
         <MuiAppBar {...props.appBar}>
           <MuiToolbar {...props.toolbar}>
-            <MenuIconButton {...props.menuButton}></MenuIconButton>
+            {/* <MenuIconButton {...props.menuButton}></MenuIconButton> */}
             <MuiTypography {...props.typography}></MuiTypography>
             {props.options.isLogin ? (
               <UserIconButton {...props.userIconButton}></UserIconButton>
             ) : (
               <>
-                <LinkButton {...props.linkLoginButton}></LinkButton>
-                <LinkButton {...props.linkSignupButton}></LinkButton>
+                <MuiStack spacing={1} direction={'row'}>
+                  <LinkButton {...props.linkLoginButton}></LinkButton>
+                  <LinkButton {...props.linkSignupButton}></LinkButton>
+                </MuiStack>
               </>
             )}
           </MuiToolbar>

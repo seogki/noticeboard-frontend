@@ -4,15 +4,39 @@ import UserTemplate from '../templates/UserTemplate'
 import UserInfo from '../organisms/UserInfo'
 import { getMember } from '@network/member'
 import { Member } from '@interface/member'
+import { useDispatch } from 'react-redux'
+import { useAppSelector } from '@redux/store'
+import { setMember } from '@redux/memberSlice'
+import { useNavigate } from 'react-router-dom'
 
 const UserPage: FC = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { member } = useAppSelector((state) => state.member)
   useEffect(() => {
     saveMemberInfo()
-  })
+  }, [])
 
   const saveMemberInfo = async () => {
     const result = await getMember<Member>()
+    if (result?.data) dispatch(setMember(result.data))
     console.log(result)
+  }
+
+  const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
+    localStorage.removeItem('access-token')
+    localStorage.removeItem('refresh-token')
+    localStorage.removeItem('grant-type')
+    localStorage.removeItem('expiration-date')
+    navigate('/')
+  }
+
+  const handleChangePassword = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigate('/change')
+  }
+
+  const redirectMain = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigate('/')
   }
 
   const UserInfoProps = {
@@ -25,12 +49,30 @@ const UserPage: FC = () => {
     },
     box: {
       sx: {
-        flexGrow: 1,
-        boxShadow: 1,
-        borderRadius: 2,
-        p: 2,
-        height: '80vh',
+        marginBottom: '10%',
       },
+    },
+    logoutBtn: {
+      color: 'inherit' as 'inherit',
+      variant: 'outlined' as 'outlined',
+      name: '로그아웃',
+      onClick: handleLogout,
+    },
+    changePasswordBtn: {
+      color: 'inherit' as 'inherit',
+      variant: 'outlined' as 'outlined',
+      name: '비밀번호 변경',
+      onClick: handleChangePassword,
+    },
+    avatar: {
+      sx: {
+        // display: 'inline-block',
+      },
+    },
+
+    options: {
+      memberEmail: member?.memberEmail,
+      memberNickname: member?.memberNickname,
     },
   }
   const MyHeaderProps = {
@@ -61,6 +103,7 @@ const UserPage: FC = () => {
       sx: {
         flexGrow: 1,
       },
+      onClick: redirectMain,
       name: 'S.Calendar',
     },
     linkLoginButton: {

@@ -12,6 +12,7 @@ const RouterLinkButton: FC<RouterLinkButtonProps> = ({
   to,
   variant,
   startIcon,
+  color,
 }: RouterLinkButtonProps) => {
   return (
     <>
@@ -20,6 +21,7 @@ const RouterLinkButton: FC<RouterLinkButtonProps> = ({
         to={to}
         variant={variant}
         startIcon={startIcon}
+        color={color}
       >
         {name}
       </Button>

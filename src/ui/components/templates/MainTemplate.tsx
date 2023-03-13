@@ -13,7 +13,7 @@ const MainTemplate: FC<MainTemplateProps> = (props: MainTemplateProps) => {
     <>
       <MuiContainer {...props.container}>
         <TS.Header>{props.header}</TS.Header>
-        <MuiContainer>
+        <MuiContainer sx={{ height: '100%' }}>
           <TS.Content>{props.content}</TS.Content>
         </MuiContainer>
       </MuiContainer>
