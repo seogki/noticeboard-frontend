@@ -1,5 +1,5 @@
-export interface Message {
+export interface Message<T> {
   status: string
   message: string
-  data: any
+  data: T
 }

@@ -1,9 +1,20 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import MyHeader from '../organisms/MyHeader'
 import UserTemplate from '../templates/UserTemplate'
 import UserInfo from '../organisms/UserInfo'
+import { getMember } from '@network/member'
+import { Member } from '@interface/member'
 
 const UserPage: FC = () => {
+  useEffect(() => {
+    saveMemberInfo()
+  })
+
+  const saveMemberInfo = async () => {
+    const result = await getMember<Member>()
+    console.log(result)
+  }
+
   const UserInfoProps = {
     container: {
       sx: {

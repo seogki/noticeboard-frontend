@@ -8,6 +8,7 @@ import MuiCheckbox from '../atoms/MuiCheckbox'
 import MyHeader from '../organisms/MyHeader'
 import LoginForm from '../organisms/LoginForm'
 import LoginTemplate from '../templates/LoginTemplate'
+import { Token } from '@interface/token'
 
 const LoginPage: FC = (): JSX.Element => {
   const navigate = useNavigate()
@@ -23,12 +24,13 @@ const LoginPage: FC = (): JSX.Element => {
         memberPassword: data.get('memberPassword'),
       },
     }
-    const result: Message = await login(payload)
+    const result = await login<Token>(payload)
 
     if (result && result.data !== null && result.data.accessToken) {
       localStorage.setItem('access-token', result.data.accessToken)
       localStorage.setItem('refresh-token', result.data.refreshToken)
       localStorage.setItem('grantType', result.data.grantType)
+      localStorage.setItem('expiration-date', result.data.expirationDate)
       dispatch(setLoginState(true))
       navigate('/')
     } else {

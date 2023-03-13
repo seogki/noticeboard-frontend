@@ -35,7 +35,7 @@ const SignUpPage: FC = () => {
       alert('모두 입력부탁드립니다')
       return
     }
-    const result: Message = await signUp(payload)
+    const result = await signUp(payload)
 
     if (result.status === 'OK') {
       navigate('/login')

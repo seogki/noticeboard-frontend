@@ -26,12 +26,12 @@ const ResetPasswordPage: FC = () => {
       alert('이메일을 입력부탁드립니다')
       return
     }
-    const result: Message = await resetPassword(payload)
+    const result = await resetPassword(payload)
 
-    if (result.status === 'OK') {
+    if (result?.status === 'OK') {
       navigate('/change')
     } else {
-      alert(result.message ?? '에러 발생')
+      alert(result?.message ?? '에러 발생')
     }
   }
 

@@ -1,4 +1,3 @@
-import { Message } from '@interface/base'
 import { changePassword } from '@network/auth'
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -21,12 +20,12 @@ const ChangePasswordPage: FC = () => {
         memberCheckPassword: data.get('memberCheckPassword'),
       },
     }
-    const result: Message = await changePassword(payload)
+    const result = await changePassword(payload)
 
-    if (result.status === 'OK') {
+    if (result?.status === 'OK') {
       navigate('/login')
     } else {
-      alert(result.message ?? '에러 발생')
+      alert(result?.message ?? '에러 발생')
     }
   }
 
